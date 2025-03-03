@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lap-store-cart</title>
+            <!-- fontawesom -->
+            <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          />
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Indie+Flower&family=Lexend:wght@100..900&family=Permanent+Marker&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+
+            *{
+        font-family: "Lexend", sans-serif;
+        
+      }
+      .navbar i{
+        margin-right:3vh;
+        font-size: xx-large;
+        
+      }
+      nav{
+        background-color:rgb(3, 32, 49) ;
+        
+      }
+   
+      .navbar-brand {
+        margin-right: -70px;
+      }
+     
+      .login
+    {
+     background-color: #f1d29a ;
+     color:rgb(104, 24, 24);
+     font-size: large;
+     font-weight: 700;
+    }
+    .login:hover{
+      background-color: rgb(184, 176, 153);
+      color: rgb(104, 24, 24);
+      font-weight: 700;
+    }
+    i{
+      color: #f1d29a;
+    }
+   nav i:hover{
+      cursor: pointer;
+      scale: 1.1;
+      
+
+    }
+    .navbar{
+      width:auto;
+    }
+    @media (max-width:900px) {
+      .navbar{
+      width:113%;
+    }
+    }
+
+    @media (min-width: 900px) and (max-width: 1065px) {
+    .navbar {
+        width: 105%;
+    }
+}
+    .navbar-nav a{
+        color: aliceblue;
+    }
+    .search{
+      background-color:#f1d39ad0 ;
+      color: #000;
+
+    }
+    .search::placeholder{
+
+     
+      color:rgb(17, 15, 0);
+      font-size: large;
+    }
+    .search:focus{
+           
+      color:rgb(243, 238, 238);
+      font-size: large;
+      background-color: #3f3e3c33;
+    }
+  body::-webkit-scrollbar{
+        border-radius: 2vh;
+        width:6px;
+        height: 1px;
+        scroll-behavior: smooth;
+      }
+    body::-webkit-scrollbar{
+        width: 8px;
+        height: 0;
+      }
+
+      
+      body::-webkit-scrollbar-track{
+        background-color: rgb(46, 61, 75);
+        width:5px;
+        
+        
+        
+        border-radius: 2vh;
+      }
+
+    body::-webkit-scrollbar-thumb{
+        background-color: rgb(233, 177, 24);
+        
+        border-radius: 2vh;
+       
+      }
+
+  body::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(200, 150, 20);
+}
+
+  
+    </style>
+</head>
+<body>
+     
+<!-- start navbar  -->
+
+<nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
+    <div class="container">
+    
+      <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
+      <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="col"></div>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 rounded-4 search" type="search" placeholder="Search" aria-label="Search">
+          <div><i class="fa-solid fa-magnifying-glass my-2 me-5 ms-1 "></i></div>
+          <a href="./login.html" class="login btn  rounded-3 fw-medium px-3 ">login</a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- end navbar -->
+    <div class="w-100 d-flex justify-content-center m-5">  <h1>booked products</h1></div> 
+    <div class="cart_product w-100 container p-5">
+
+    </div>
+    <script>
+
+
+// تحميل المنتجات من `localStorage` أو تعيين مصفوفة فارغة إذا لم تكن موجودة
+let productsList = document.querySelector(".cart_product");
+
+// تحميل المنتجات من `localStorage` أو تعيين مصفوفة فارغة إذا لم تكن موجودة
+let product = JSON.parse(localStorage.getItem("productX")) || [];
+
+// عرض المنتجات عند تحميل الصفحة
+displayProducts();
+
+function displayProducts() {
+    productsList.innerHTML = ""; // مسح المحتوى القديم
+
+    for (let i = 0; i < product.length; i++) {
+        let productHTML = `
+         <div class="w-100">
+                <div class="card mb-3 w-100 bg-white d-flex flex-lg-row justify-content-between align-items-center">
+                    <div class="card-body container text-center  text-lg-start ">
+                        <h5 class="text-black">Product Name: <span class="text-black-50">${product[i].name}</span></h5>
+                        <p style="color: green; font-weight: 700;">${product[i].price}</p>
+                        <p style="color: green; font-weight: 700;">Quantity: ${product[i].bn}</p>
+                       <div class="my-2">
+                          <button class="btn btn-dark m-1 px-3" onclick="add(${i})"><i class="fa-solid fa-cart-plus"></i></button>
+                          <button class="btn btn-dark px-3 m-1" onclick="sub(${i})"><i class="fa-solid fa-minus"></i></button>
+                        </div>
+                        <div>
+                        <a href="confirm.html">    <button onclick="confirm(${i})" class="btn btn-success m-1">Confirm</button></a>
+                            <button class="btn btn-danger m-1" onclick="Delete(${i})">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="w-50">
+                        <img class="w-100   rounded-5" src="${product[i].image}" alt="Product Image">
+                    </div>
+                </div>
+            </div>
+        `;
+        productsList.innerHTML += productHTML;
+    }
+}
+
+function add(index) {
+    product[index].bn += 1;
+    updateProducts();
+}
+
+function sub(index) {
+    if (product[index].bn > 1) {
+        product[index].bn -= 1;
+    } else {
+        product.splice(index, 1); // حذف العنصر عند وصول `bn` إلى 0
+    }
+    updateProducts();
+}
+function Delete(index){
+  updateProducts()
+console.log(4)
+product.splice(index,1)
+updateProducts()
+}
+function confirm(i){
+  let index=i;
+  localStorage.setItem("index", index); 
+ 
+  console.log(localStorage.index)
+}
+
+// تحديث `localStorage` وعرض المنتجات
+function updateProducts() {
+  
+
+    localStorage.setItem("productX", JSON.stringify(product)); // تم تصحيح المفتاح
+    displayProducts();
+}
+
+
+    </script>
+     <!-- sweetAlert2 (library) -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+</html>

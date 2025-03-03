@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="./color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+    <title>lap-store</title>
+        <!-- fontawesom -->
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="./dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- google font link -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Indie+Flower&family=Lexend:wght@100..900&family=Permanent+Marker&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+<!-- animation -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+
+    <style>
+
+      *{
+        font-family: "Lexend", sans-serif;
+        
+      }
+      .navbar i{
+        margin-right:3vh;
+        font-size: xx-large;
+        
+      }
+      nav{
+        background-color:rgb(3, 32, 49) ;
+      }
+      .navbar-brand {
+        margin-right: -70px;
+      }
+     
+      .login
+    {
+     background-color: #f1d29a ;
+     color:rgb(104, 24, 24);
+     font-size: large;
+     font-weight: 700;
+    }
+    .login:hover{
+      background-color: rgb(184, 176, 153);
+      color: rgb(104, 24, 24);
+      font-weight: 700;
+    }
+    i{
+      color: #f1d29a;
+    }
+   nav i:hover{
+      cursor: pointer;
+      scale: 1.1;
+      
+    }
+    .search{
+      background-color:#f1d39ad0 ;
+      color: #000;
+
+    }
+    .search::placeholder{
+
+     
+      color:rgb(240, 228, 228);
+      font-size: large;
+    }
+    .search:focus{
+           
+      color: #ffffff;;
+      font-size: large;
+      background-color: #ffffff;
+    }
+    .landing{
+        height: calc(100vh - 69px);
+        background-color: rgb(3, 32, 49);
+        width: 100%;
+        
+      }
+
+      .landing h1 {
+        color: #f1d29a;
+        margin-bottom: 3vh;
+        display: inline-block;
+  margin: 0 0.5rem;
+
+  animation: bounce; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+      }
+      .landing p{
+        color: rgb(185, 213, 230);
+        font-size: large;
+
+      }
+      .landing p strong{
+        color: green;
+      }
+      .landing button{
+        background-color: #f1d29a;
+        color: rgb(104, 24, 24);
+        padding: 1vh 6vh;
+        font-size: larger;
+        font-weight: 700;
+      }
+      .landing button:hover{
+        background-color: aliceblue;
+        color: rgb(104, 24, 24)
+      }
+      .start::after{
+        content: "";
+        height: 2.5px;
+        width: 240px;
+        background-color: #f1d29a;
+        margin-bottom: 5vh;
+        
+       
+
+
+      }
+      .feature i{
+         left: 50vh;
+         transform: translateX(-50%);
+      }
+      .icon-holder .number , .icon-holder .icon{
+        left:50%;
+        transform: translateX(-50%);
+      }
+        
+        .icon-holder{
+          height: 200px;
+        }
+      .icon-holder .number{
+        font-size: 12rem;
+        color: rgba(128, 128, 128, 0.308);
+      }
+      .icon-holder .icon{
+        bottom:15px;
+        font-size: 2rem;
+        transform: rotate(20deg);
+      }
+    
+      .search-product{
+        margin-top: 8vh;
+        background-color: transparent;
+      }
+       .X::after{
+        margin-top: 2vh;
+        content: "";
+        height: 2.5px;
+        width: 100%;
+        background-color: #f1d29a;
+           
+    
+      }
+      .feat strong ,.About h2{
+        color: rgb(3, 32, 49);
+      }
+
+      .nav li{
+        margin: 0 10px;
+        color:#f1d29a;
+        font-weight: 700;
+        /* box-shadow: 0.2vh 0.2vh 0.1vh 0.1vh gray; */
+        border-radius: 10px;
+        background-color: rgb(170, 55, 10);
+        padding: 10px;
+      }
+      .nav li:hover{
+        cursor: pointer;
+        background-color: rgba(170, 55, 10, 0.774);
+      }
+       h2 ,label{
+       color:rgb(3, 32, 49) ;
+      }
+      label{
+        font-weight: 500;
+      }
+     .form-control::placeholder{
+        color:rgba(170, 55, 10, 0.774);
+        font-weight: 500;
+
+      }
+      .form-control:focus{
+         background-color: #0000005b;
+
+      }
+      .About button{
+            background: #000;
+      }
+      .form-control{
+        background-color: #f1d29a;
+      }
+      .product{
+        
+        margin: 15px;
+        border: solid;
+        border-radius: 10px;
+        
+        
+      }
+      .fa-store{
+        font-size: 80px;
+      }
+      .About p{
+        color: rgb(71, 71, 71);
+        
+
+      }
+      .contact .btn{
+        background: #000;
+      }
+      .contact .btn:hover{
+        background: #000000a6;
+      }
+      
+      .contact ,.About h2{
+        margin: 25vh 0vh ;
+      }
+      
+      .product .chill{
+        border: none;
+        box-shadow: 0.01vh 0.01vh 0.8vh 0.1vh gray;
+        animation: appear 1.5s ease-in-out;
+      }
+      #product{
+        height: 854px;
+        width: auto;
+        overflow: auto;
+        
+      }
+      #product::-webkit-scrollbar ,body::-webkit-scrollbar{
+        border-radius: 2vh;
+        width:6px;
+        height: 1px;
+        scroll-behavior:smooth;
+      }
+      body::-webkit-scrollbar{
+        width: 8px;
+        
+      }
+
+      #product::-webkit-scrollbar-track{
+        background-color: rgb(46, 61, 75);
+        width:5px;
+        
+        margin: 250px 0;
+        border-radius: 2vh;
+      }
+
+      body::-webkit-scrollbar-track{
+        background-color: rgb(46, 61, 75);
+        width:5px;
+        
+        
+        border-radius: 2vh;
+      }
+
+      #product::-webkit-scrollbar-thumb ,body::-webkit-scrollbar-thumb{
+        background-color: rgb(233, 177, 24);
+        
+        border-radius: 2vh;
+        
+        
+       
+      }
+
+      #product::-webkit-scrollbar-thumb:hover ,body::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(200, 150, 20);
+}
+
+      footer ,.landing ,.navbar{
+        width: 103.2%;
+      }
+     
+
+      @keyframes appear {
+        0%{
+       
+         margin: 1vh;
+         
+         
+         
+        }
+        100%{
+          opacity: 1;
+        }
+      }
+      @media (min-width: 992px) {  
+    .position-fixed-lg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: white; 
+        z-index: 1000;
+    }
+}
+ a{
+  text-decoration: none;
+}
+#product_section h2{
+  margin: 10vh 0 -4vh 0;
+}
+.custom-btn {
+    background-color: #24242c !important;
+    border-color: #24242c !important;
+    color: #f1d29a !important; /* لجعل النص واضحًا */
+    font-weight: 800;
+}
+
+.custom-btn:hover {
+    background-color: #1a1a2165 !important; /* لون أغمق عند التمرير */
+    border-color: #1a1a2167 !important;
+}
+.x ul li{
+  background-color: rgb(3, 32, 49) ;
+}
+#contact_section input ,#contact_section textarea{
+color: #000;
+}
+
+
+      
+      
+
+    /* .landing img{
+      margin-right: -5vh;
+    } */
+    </style>
+
+
+    <body class="bg-white"  >
+      
+ 
+<!-- start navbar  -->
+
+      <nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
+        <div class="container">
+         <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a> 
+          <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item ">
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#product_section">Service</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about_section">About</a>
+              </li>
+            
+              <li class="nav-item">
+                <a class="nav-link" href="#contact_section">contact</a>
+              </li>
+              
+            </ul>
+            <form class="d-flex" role="search">
+              <input onkeyup="search()"  class="form-control me-2 rounded-4 search" placeholder="Search" aria-label="Search">
+              <a href="#product_section"  ><i class="fa-solid fa-magnifying-glass my-2 me-5 ms-1"></i></a>
+              <a href="./login.html" class="login btn  rounded-3 fw-medium px-3 ">login</a>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- end navbar -->
+
+      <!-- start header -->
+       <div class="landing bg-dark  d-flex  align-items-center ">
+       <div class=" d-flex  align-items-center container  flex-column flex-lg-row  ">
+        <div class="d-flex  container flex-column title w-100 ">
+            <!-- title  -->
+          <h1 class="m-3"  >
+              LapTechStore
+            </h1>
+            <!-- paragraphe -->
+            <p class="bg-black-50 lh-lg w-75">Get the best deals on high-performance laptops! Enjoy up to <strong class="offer mx-2">30% off</strong> on selected models. Limited-time offer – shop now!</p>
+            <a href="#product_section" class="">   <button  class="btn  d-flex justify-content-center  w-25   ">Show</button></a>
+        </div>
+
+        <!-- img -->
+        <div class="  d-flex justify-content-lg-end   " >
+          <img src="./pic/header_img2.png" class="w-100 mt-lg-0 mt-3" alt="">
+        </div>
+      </div>
+    </div>
+<div >
+<!-- feature -->
+    <div class="d-flex flex-column container" >
+      <div class="container">
+        <div class="d-flex align-items-center my-5 flex-column start" >
+          <div class="my-3">
+            <i class="fa-solid fa-store "></i>
+          </div>
+         
+          <h1 class="text-dark">We Are Good At</h1>
+          <p class="paragraphe text-black-50">Some of thease stuff under</p>
+        </div>
+
+
+  <div class="row feature g-5 ">
+     <div class="col-md-6 col-lg-4 X d-flex flex-column feat">
+       <div class="feat">
+            <div class="icon-holder position-relative">
+            <i class="fa-solid fa-1 position-absolute   number"></i>
+            <i class="fa-solid fa-laptop  position-absolute icon"></i>
+          </div>
+        </div>
+            <h2 class="text-center text-dark">
+              laptop
+            </h2>
+            <p class="text-dark text-center">Our store offers high-quality laptops that cater to different needs, whether you're a professional, student, or gamer<strong>high-performance processors</strong>, <strong>long battery life</strong>, and <strong>crystal-clear displays</strong></p>
+
+       </div>
+
+       <div class="col-md-6 col-lg-4 X d-flex flex-column feat">
+        <div class="feat">
+             <div class="icon-holder position-relative">
+             <i class="fa-solid fa-2 position-absolute   number"></i>
+             <i class="fa-solid fa-desktop  position-absolute icon"></i>
+           </div>
+         </div>
+             <h2 class="text-center text-dark">
+              PC
+             </h2>
+             <p class="text-dark text-center">Experience top-quality pc with <strong>high-performance processors</strong>, <strong>long battery life</strong>, and <strong>crystal-clear displays</strong>. Enjoy fast SSD storage, sleek designs, and exclusive deals with every purchase!</p>
+ 
+        </div>
+
+        <div class="col-md-6 col-lg-4 X d-flex flex-column feat">
+          <div class="feat">
+               <div class="icon-holder position-relative">
+               <i class="fa-solid fa-3 position-absolute   number"></i>
+               <i class="fa-solid fa-mobile-screen position-absolute icon"></i>
+             </div>
+           </div>
+               <h2 class="text-center text-dark">
+                 mobile
+               </h2>
+               <p class="text-dark text-center">Experience top-quality mobiles with <strong>high-performance processors</strong>, <strong>long battery life</strong>, and <strong>crystal-clear displays</strong>. Enjoy fast SSD storage, sleek designs express</p>
+   
+          </div>
+
+                                  
+
+
+
+   </div>
+      </div>
+    </div>
+<!-- products -->
+    <div class="w-100 " id="product_section">
+<h2 class="d-flex justify-content-center  ">products</h2>
+      <nav class="d-flex justify-content-center search-product container">
+        <div class="mb-5">
+          <div class="d-flex" >
+            <input class="form-control me-2 search"  onkeyup="search()" id="searchBox" placeholder="Search" aria-label="Search">
+            <button class=" login btn" onclick="confirm1()"  >Search</button>
+          </div>
+        </div>
+      </nav>
+   <div class="container x">
+        <div class="nav justify-content-center mb-5 ">
+          <ul class="d-flex list-unstyled text-center p-0" >
+            <li onclick="laptop()" ><i  class="fa-solid fa-laptop mx-1"></i>laptop </li>
+            <li onclick="pc()"><i  class="fa-solid fa-desktop mx-1"></i>Pc </li>
+            <li  onclick="mobile()"> <i class="fa-solid fa-mobile-screen mx-1"></i>mobile</li>
+          </ul>
+        </div>
+<!-- product -->
+
+
+        <div id="product" class="product p-3   row  ">
+
+
+
+        </div>
+        <div class="d-flex justify-content-between my-4 ">
+          
+        </div>
+        
+</div>
+      
+      </div>
+    </div>
+<!-- about -->
+    <div class="container About  " id="about_section">
+      <h2 class="d-flex justify-content-center align-items-center m-5 about">About</h1>
+      <div class="row d-flex justify-content-center align-items-center">
+        
+        <!-- العمود الأول للنص -->
+        <div class="col-md-4 container mb-5">
+          <p class=" d-flex align-items-center container">
+            Welcome to our store, your one-stop destination for high-quality laptops, PCs, smartphones, 
+            and smart devices. We offer a carefully selected range of products from top brands like HP, Dell,
+             Samsung, and Oppo, ensuring performance, reliability, and great value for money.
+
+Whether you're looking for a powerful workstation, a sleek laptop, or a
+ feature-packed smartphone, we have something for everyone. Our mission is to provide 
+ top-notch technology at competitive prices, along with excellent customer service.
+          </p>
+        </div>
+    
+        <!-- العمود الثاني للأنيميشن -->
+        <div class="col-md-4 d-flex justify-content-center">
+          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+          <dotlottie-player src="https://lottie.host/32dfddaa-8343-4034-8304-3ac9844ea860/CFXyy2yyav.lottie" background="transparent" 
+          speed="1" style="width: 250px; height: 300px" 
+          loop autoplay></dotlottie-player>
+        </div>
+    
+      </div>
+    </div>
+
+<!-- contact -->
+    <div class="d-flex flex-column align-content-center contact " id="contact_section">
+      <h2 class="text-center mb-5">Contact Us</h2>
+
+      <form onsubmit="sendEmail(event)" class="row justify-content-center">
+        <div class="col-3"></div>
+        <div class="mb-3 col-10 col-md-6 col-lg-4">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+        </div>
+        <div class="col-3"></div>
+        
+        <div class="col-3"></div>
+        <div class="mb-3 col-10  col-md-6 col-lg-4">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="col-3"></div>
+        <div class="mb-3 col-10 col-md-6 col-lg-4 ">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea class="form-control" id="message" rows="4" placeholder="Write your message" required></textarea>
+        </div>
+        <div class="justify-content-center d-flex">
+        <button type="submit" class="btn">Send Message</button>
+      </div>
+      </form>
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-dark text-light pt-4 pb-2   ">
+      <div class="container">
+        <div class="row">
+          
+          <!-- القسم الأول: معلومات المتجر -->
+          <div class="col-md-4">
+            <h5>About Us</h5>
+            <p>We provide high-quality laptops at the best prices.</p>
+          </div>
+    
+          <!-- القسم الثاني: روابط سريعة -->
+          <div class="col-md-4">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-light text-decoration-none">Home</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Shop</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Contact</a></li>
+              <li><a href="#" class="text-light text-decoration-none">Support</a></li>
+            </ul>
+          </div>
+    
+          <!-- القسم الثالث: وسائل التواصل -->
+          <div class="col-md-4">
+            <h5>Follow Us</h5>
+            <a href="#" class="text-light me-3"><i class="fa-brands fa-facebook fa-lg"></i></a>
+            <a href="#" class="text-light me-3"><i class="fa-brands fa-twitter fa-lg"></i></a>
+            <a href="#" class="text-light me-3"><i class="fa-brands fa-instagram fa-lg"></i></a>
+          </div>
+        </div>
+    
+        <hr class="my-3 border-light">
+    
+        <p class="text-center">&copy; 2025 Laptop Store. All rights reserved.</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+        <script >
+    // قائمة المنتجات
+
+(function () {
+  emailjs.init("1sHuuplna5AR2vMrO"); // ضع الـ User ID الخاص بك من EmailJS
+})();
+
+function sendEmail(event) {
+  event.preventDefault(); // لمنع إعادة تحميل الصفحة
+
+  let name = document.getElementById("name");
+  let email = document.getElementById("email");
+  let message = document.getElementById("message");
+
+  let params = {
+    name: name.value,
+    email: email.value,
+    message: message.value,
+  };
+
+  emailjs.send("service_kpi033a", "template_qvz78in", params)
+    .then(response => {
+      // عرض رسالة النجاح
+      Swal.fire({
+        title: "Send",
+        text: "Your message has been sent successfully!",
+        icon: "success",
+        iconColor: "green",
+        confirmButtonText: "OK",
+        confirmButtonColor: "green",
+      });
+
+ // مسح الحقول بعد الإرسال الناجح name.value = "";
+      email.value = "";
+      message.value = "";
+    })
+    .catch(error => {
+      // عرض رسالة الخطأ
+      Swal.fire({
+        title: "Error!",
+        text: "Please fill in all fields correctly.",
+        icon: "error",
+        iconColor: "red",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#24242c",
+      });
+    });
+}
+
+const products = [
+    { "name": "HP Laptop", "image": "./pic/pexels-craigmdennis-205421.jpg", "description": "Powerful laptop with i7 processor", "price":15000, "id": "laptop" ,"bn":0},
+    { "name": "Dell Laptop", "image": "./pic/lap2.jpg", "description": "Laptop with AMOLED display", "price":300000, "id": "laptop","bn":0},
+    { "name": "ZBook Laptop", "image": "./pic/lap3.jpg", "description": "High-performance workstation laptop", "price":20000 , "id": "laptop","bn":0},
+    { "name": "Dell Workstation", "image": "./pic/lap4.jpg", "description": "Professional-grade workstation", "price":3500, "id": "laptop","bn":0},
+    { "name": "EBook Laptop", "image": "./pic/lap1.jpg", "description": "High-performance workstation laptop", "price": 22000, "id": "laptop","bn":0},
+
+    { "name": "HP PC", "image": "./pic/c3.jpg", "description": "High-end PC with 24MP camera", "price": 25000, "id": "pc","bn":0 },
+    { "name": "Samsung Phone", "image": "./pic/phone.jpg", "description": "Smartphone with AMOLED display", "price": 10000, "id": "mobile","bn":0 },
+   
+  
+    { "name": "Dell PC", "image": "./pic/c1.jpg", "description": "PC with high-quality sound", "price": 50000, "id": "pc" ,"bn":0},
+    { "name": "mac pro PC", "image": "./pic/c2.jpg", "description": "PC with high-quality sound", "price":11500, "id": "pc" ,"bn":0},
+
+    { "name": "samsung ultra 10 Phone", "image": "./pic/sam1.jpg", "description": "Smartphone with AMOLED display", "price": 10000, "id": "mobile","bn":0 },
+    { "name": "oppo ultra 12 ", "image": "./pic/sam2.jpg", "description": "Smartphone with AMOLED display", "price": 18000, "id": "mobile","bn":0 },
+    { "name": "oppo ultra  13", "image": "./pic/sam3.jpg", "description": "Smartphone with AMOLED display", "price": 19000, "id": "mobile","bn":0 },
+    { "name": "oppo ultra 5", "image": "./pic/sam4.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0 },
+    { "name": "iphone 13 pro", "image": "./pic/sam7.jpg", "description": "Smartphone with AMOLED display", "price": 260000, "id": "mobile","bn":0 }, 
+    { "name": "iphone X-max pro", "image": "./pic/sam6.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0 }, 
+  
+    { "name": "iphone X-max", "image": "./pic/sam5.jpg", "description": "Smartphone with AMOLED display", "price": 14000, "id": "mobile","bn":0 },
+]
+
+
+let product_list=[]
+
+let localList=[];
+if(( localStorage.getItem(("productList")))!= null){
+
+      localList=JSON.parse(localStorage.productList);
+    }else{
+       locallist=[];
+    }
+product_list.clear;
+product_list=products
+// عرض المنتجات على الصفحة
+ let productsList = document.getElementById("product");
+
+
+function mobile(){
+       let sort_array=[];
+       for(let i=0; i<products.length;i++){
+        if(products[i].id=="mobile"){
+        sort_array.push(products[i]);
+       }
+       product_list.clear;
+       product_list=sort_array
+       
+       
+       
+}
+displayProducts(sort_array)
+console.log("mobile")  
+}
+
+function pc(){
+  let sort_array=[];
+       for(let i=0; i<products.length;i++){
+        if(products[i].id=="pc"){
+          sort_array.push(products[i]);
+        }
+     
+       }
+      
+       displayProducts(sort_array)
+       product_list.clear;
+       product_list=sort_array
+       console.log("pc")
+}
+function laptop(){
+  let sort_array=[];
+       for(let i=0; i<products.length;i++){
+        if(products[i].id=="laptop"){
+          sort_array.push(products[i]);
+        }
+       
+       }
+    
+       displayProducts(sort_array);
+       console.log("lap")
+       product_list.clear;
+       product_list=sort_array
+}
+
+
+
+
+function displayProducts(product) {
+    productsList.innerHTML =""; // مسح المنتجات القديمة
+
+    for(let i=0; i<product.length;i++){
+        let productHTML = `
+            <div  class=" col-md-6 col-lg-4">
+                <div class="chill card mb-3  bg-white product">
+                    <img src="${product[i].image}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="text-black">${product[i].name}</h5>
+                        <p style="color:#c4945d
+                         ; font-weight: 700;" >${product[i].description}</p>
+                        <p style="color: green; font-weight: 700;">${product[i].price}</p>
+                        <p  class="btn custom-btn " onclick="Add(${i})"><span class="me-2"> add to cart </span><i class="fa-solid fa-cart-shopping"></i></p>
+
+                    </div>
+                </div>
+            </div>
+        `;
+        productsList.innerHTML+=productHTML;
+    };
+}
+
+// تشغيل الدالة عند تحميل الصفحة
+displayProducts(products);
+
+// البحث عن المنتجات
+
+
+
+function confirm1(){
+  let searchQuery=document.querySelector("#searchBox");
+  if(searchQuery.value===""){
+  productsList.classList.add("appear")
+  
+  Swal.fire({
+    title: "warning",
+    text: "please enter the product name",
+    icon: "warning", // استخدم "error" أو أيقونة مدعومة أخرى
+    confirmButtonText: "OK",
+    confirmButtonColor: "#000000",
+    showConfirmButton: false, // لون زر التأكيد بالأسود
+    timer: 1500,
+   
+});
+}
+}
+function search(){
+    let arr=[];
+    let searchQuery=document.querySelector("#searchBox");
+    for(let i=0; i<products.length;i++){
+      
+        if( products[i].name.toLowerCase().includes(searchQuery.value)){
+            arr.push(products[i])
+            
+
+}
+
+
+
+}
+product_list.clear;
+product_list=arr
+
+if(!arr[0]){
+  console.log(0);
+ 
+  Swal.fire({
+    title: "Error",
+    text: "Not found this products",
+    icon: "error", // استخدم "error" أو أيقونة مدعومة أخرى
+    confirmButtonText: "OK",
+    confirmButtonColor: "#000000",
+    showConfirmButton: false, // لون زر التأكيد بالأسود
+    timer: 1000,
+    customClass: {
+      popup: 'move-up'
+    }
+});
+productsList.innerHTML=``;
+
+
+
+}
+else{
+  
+  displayProducts(products);
+displayProducts(arr);
+}
+}
+
+function Add(x) {
+
+    let productList = JSON.parse(localStorage.getItem("productX")) || [];
+    let newProduct = { ...product_list[x] }; // نسخ العنصر لتجنب التعديل المباشر
+
+    let existingProduct = productList.find(p => p.name === newProduct.name);
+
+    if (existingProduct) {
+        existingProduct.bn += 1;
+    } else {
+        newProduct.bn = 1; // تعيين `bn` لأول مرة
+        productList.push(newProduct);
+    }
+
+    localStorage.setItem("productX", JSON.stringify(productList));
+
+    Swal.fire({
+        title: "Added!",
+        text: `${newProduct.name} added to cart`,
+        icon: "success",
+        iconColor:"#f2d29a",
+        confirmButtonText: "OK",
+        confirmButtonColor:"#24242c" ,
+        timer: 1000
+    });
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+ <!-- sweetAlert2 (library) -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="sidebars.js"></script>
+  </body>
+</html>
+
+
+
