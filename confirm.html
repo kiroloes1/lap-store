@@ -223,8 +223,11 @@ body::-webkit-scrollbar{
 
 
 
-
-
+   
+let list=[]
+let details=document.querySelector(".detailsProduct")
+list=JSON.parse(localStorage.getItem("productX"));
+let index=localStorage.index;
 (function() {
         emailjs.init("1sHuuplna5AR2vMrO"); // Replace with your Public Key
     })();
@@ -241,7 +244,12 @@ body::-webkit-scrollbar{
             address: document.getElementById("address").value,
             delivery_date: document.getElementById("delivery-date").value,
             delivery_location: document.getElementById("delivery-location").value,
-            alternative_location: document.getElementById("alternative-location").value
+            alternative_location: document.getElementById("alternative-location").value,
+            product_name:list[index].name,
+            product_type:list[index].id,
+            product_count:list[index].bn,
+            product_price:list[index].price,
+            total_price:(list[index].price)*(list[index].bn),
         };
 
         // Disable submit button while sending
@@ -290,9 +298,8 @@ body::-webkit-scrollbar{
     }
 
 
-    let details=document.querySelector(".detailsProduct")
-    let list=[]
-    let index=localStorage.index;
+ 
+   
  list=JSON.parse(localStorage.getItem("productX"));
  console.log(list[index].price+1)
     console.log(index)
