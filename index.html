@@ -266,15 +266,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         overflow: auto;
         
       }
-      #product::-webkit-scrollbar ,body::-webkit-scrollbar{
+      #product::-webkit-scrollbar ,body::-webkit-scrollbar {
         border-radius: 2vh;
         width:6px;
         height: 1px;
         scroll-behavior:smooth;
       }
-      body::-webkit-scrollbar{
+      body::-webkit-scrollbar {
         width: 8px;
         
+      }
+      .customer::-webkit-scrollbar{
+        height: 8px;
       }
 
       #product::-webkit-scrollbar-track{
@@ -292,8 +295,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         
         border-radius: 2vh;
       }
+      .customer::-webkit-scrollbar-track{
+        background-color: rgb(46, 61, 75);
+        width:5px;
+        
+        
+        border-radius: 2vh;
+      }
 
-      #product::-webkit-scrollbar-thumb ,body::-webkit-scrollbar-thumb{
+      #product::-webkit-scrollbar-thumb ,body::-webkit-scrollbar-thumb ,.customer::-webkit-scrollbar-thumb{
         background-color: rgb(233, 177, 24);
         
         border-radius: 2vh;
@@ -302,7 +312,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
        
       }
 
-      #product::-webkit-scrollbar-thumb:hover ,body::-webkit-scrollbar-thumb:hover{
+      #product::-webkit-scrollbar-thumb:hover ,body::-webkit-scrollbar-thumb:hover ,.customer::-webkit-scrollbar-thumb:hover{
     background-color: rgb(200, 150, 20);
 }
 
@@ -356,6 +366,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 #contact_section input ,#contact_section textarea{
 color: #000;
 }
+.customer{
+  overflow-x: scroll;
+}
 
 
       
@@ -374,7 +387,7 @@ color: #000;
 
       <nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
         <div class="container">
-         <a href="cart.html"><i class="fa-solid fa-cart-shopping "></i></a> 
+         <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a> 
           <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
           <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -382,17 +395,17 @@ color: #000;
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item ">
-                <a class="nav-link active text-white" aria-current="page" href="./index.html">Home</a>
+                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#product_section">Service</a>
+                <a class="nav-link" href="#product_section">Service</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="#about_section">About</a>
+                <a class="nav-link" href="#about_section">About</a>
               </li>
             
               <li class="nav-item">
-                <a class="nav-link text-white" href="#contact_section">contact</a>
+                <a class="nav-link" href="#contact_section">contact</a>
               </li>
               
             </ul>
@@ -556,10 +569,11 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
 
 
 
-          <section class="testimonials py-5 bg-light mt-5">
+    <!-- opinion customers -->
+    <section class="testimonials py-5 bg-light mt-5">
       <div class="container text-center">
           <h2 class="mb-4">Customer Reviews</h2>
-          <div class="row g-4">
+          <div class="customer g-4 d-flex flex-row">
               <div class="col-md-4">
                   <div class="testimonial p-4">
                       <p class="text-black-50"> "Great service! Highly recommended."</p>
@@ -578,10 +592,29 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
                       <h4 class="text-dark">- Khaled Hassan</h4>
                   </div>
               </div>
+
+              <div class="col-md-4">
+                <div class="testimonial p-4">
+                    <p class="text-black-50"> "Great service! Highly recommended."</p>
+                    <h4 class="text-dark">- Ahmed Ali</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial p-4">
+                    <p class="text-black-50">"Amazing experience, will definitely come back."</p>
+                    <h4 class="text-dark">- Sarah Mohamed</h4>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial p-4">
+                    <p class="text-black-50">"Best customer support I have ever received!"</p>
+                    <h4 class="text-dark">- Khaled Hassan</h4>
+                </div>
+            </div>
           </div>
       </div>
   </section>
-
+  <!-- end opinion  -->
 <!-- contact -->
     <div class="d-flex flex-column align-content-center contact " id="contact_section">
       <h2 class="text-center mb-5">Contact Us</h2>
@@ -606,7 +639,7 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
           <textarea class="form-control" id="message" rows="4" placeholder="Write your message" required></textarea>
         </div>
         <div class="justify-content-center d-flex">
-        <button type="submit" class="btn text-white">Send Message</button>
+        <button type="submit" class="btn">Send Message</button>
       </div>
       </form>
     </div>
