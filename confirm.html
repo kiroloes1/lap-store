@@ -258,7 +258,7 @@ let index=localStorage.index;
         const submitButton = document.querySelector("button[type='submit']");
         submitButton.disabled = true;
         submitButton.innerText = "Sending...";
-
+         
         // Send data via EmailJS
         emailjs.send("service_kpi033a", "template_qvz78in", formData)
         .then(response => {
@@ -277,6 +277,10 @@ let index=localStorage.index;
         document.getElementById("delivery-location").value=""
         document.getElementById("alternative-location").value=""
         document.getElementById("address").value=""
+
+         list[index].bn=0;
+         localStorage.setItem("productX", JSON.stringify(list))
+
 
 
             

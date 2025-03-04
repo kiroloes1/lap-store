@@ -172,6 +172,9 @@ function displayProducts() {
     productsList.innerHTML = ""; // مسح المحتوى القديم
 
     for (let i = 0; i < product.length; i++) {
+      if(product[i].bn==0){
+         continue
+      }
         let productHTML = `
          <div class="w-100">
                 <div class="card mb-3 w-100 bg-white d-flex flex-lg-row justify-content-between align-items-center">
