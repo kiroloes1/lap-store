@@ -78,6 +78,37 @@
     background-color: black; /* إضافة خلفية سوداء حتى لا تظهر فراغات بيضاء حول الصورة */
 }
 
+.x-axis::-webkit-scrollbar{
+        border-radius: 2vh;
+        width:6px;
+        height: 1px;
+        scroll-behavior: smooth;
+      }
+      .x-axis::-webkit-scrollbar{
+        width: 8px;
+        height: 10px;
+      }
+
+      
+      .x-axis::-webkit-scrollbar-track{
+        background-color: rgb(46, 61, 75);
+        width:5px;
+        
+        
+        
+        border-radius: 2vh;
+      }
+
+      .x-axis::-webkit-scrollbar-thumb{
+        background-color: rgb(233, 177, 24);
+        
+        border-radius: 2vh;
+       
+      }
+
+      .x-axis::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(200, 150, 20);
+}
 
     </style>
 </head>
@@ -104,26 +135,42 @@
   <!-- end navbar -->
 
     <div class="header border-3 rounded-2 border-black"></div>
-
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Product Details</h2>
-        <table class="table table-bordered text-center">
-            <thead class="table-dark">
-                <tr>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Count</th>
-                    <th>Price</th>
-                    <th>Total Price</th>
-                    <th>Seller</th>
-                    <th>Rating</th>
-                </tr>
-            </thead>
-            <tbody class="table1">
-            
-            </tbody>
-        </table>
-    </div>
+      <h2 class="text-center mb-4">Product Details</h2>
+      <div class="table-responsive">
+          <table class="table table-bordered text-center">
+              <thead class="table-dark">
+                  <tr>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Count</th>
+                      <th>Price</th>
+                      <th>Total Price</th>
+                      <th>Seller</th>
+                      <th>Rating</th>
+                  </tr>
+              </thead>
+              <tbody class="table1">
+                  <tr class="x-axis"> 
+                      <td id="product-name">${productsList[0].name}</td>
+                      <td id="product-category">${productsList[0].id}</td>
+                      <td id="product-count">${productsList[0].bn + 1}</td>
+                      <td id="product-price">${productsList[0].price}</td>
+                      <td id="total-price">${productsList[0].price}</td>
+                      <td>Eng/Kiroloes Reda</td>
+                      <td>
+                          <span class="star" data-value="1">★</span>
+                          <span class="star" data-value="2">★</span>
+                          <span class="star" data-value="3">★</span>
+                          <span class="star" data-value="4">★</span>
+                          <span class="star" data-value="5">★</span>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  
 
 
     
@@ -176,21 +223,21 @@ let productsList=[]
     console.log(1)
 
     let tab=`
-        <tr>
-                    <td id="product-name">${productsList[0].name}</td>
-                    <td id="product-category">${productsList[0].id}</td>
-                    <td id="product-count">${productsList[0].bn+1}</td>
-                    <td id="product-price">${productsList[0].price}</td>
-                    <td id="total-price">${productsList[0].price}</td>
-                    <td>Eng/Kiroloes Reda</td>
-                    <td>
-                        <span class="star" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </td>
-                </tr>
+               <tr class="x-axis"> 
+                      <td id="product-name">${productsList[0].name}</td>
+                      <td id="product-category">${productsList[0].id}</td>
+                      <td id="product-count">${productsList[0].bn + 1}</td>
+                      <td id="product-price">${productsList[0].price}</td>
+                      <td id="total-price">${productsList[0].price}</td>
+                      <td>Eng/Kiroloes Reda</td>
+                      <td>
+                          <span class="star" data-value="1">★</span>
+                          <span class="star" data-value="2">★</span>
+                          <span class="star" data-value="3">★</span>
+                          <span class="star" data-value="4">★</span>
+                          <span class="star" data-value="5">★</span>
+                      </td>
+                  </tr>
     `;
     table.innerHTML=tab;
   
