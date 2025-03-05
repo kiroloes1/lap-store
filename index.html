@@ -731,50 +731,52 @@ function sendEmail(event) {
 }
 
 const products = [
-    { "name": "HP Laptop", "image": "./pic/pexels-craigmdennis-205421.jpg", "description": "Powerful laptop with i7 processor", "price":15000, "id": "laptop" ,"bn":0},
-    { "name": "Dell Laptop", "image": "./pic/lap2.jpg", "description": "Laptop with AMOLED display", "price":300000, "id": "laptop","bn":0},
-    { "name": "ZBook Laptop", "image": "./pic/lap3.jpg", "description": "High-performance workstation laptop", "price":20000 , "id": "laptop","bn":0},
-    { "name": "Dell Workstation", "image": "./pic/lap4.jpg", "description": "Professional-grade workstation", "price":3500, "id": "laptop","bn":0},
-    { "name": "EBook Laptop", "image": "./pic/lap1.jpg", "description": "High-performance workstation laptop", "price": 22000, "id": "laptop","bn":0},
-
-    { "name": "HP PC", "image": "./pic/c3.jpg", "description": "High-end PC with 24MP camera", "price": 25000, "id": "pc","bn":0 },
-    { "name": "Samsung Phone", "image": "./pic/phone.jpg", "description": "Smartphone with AMOLED display", "price": 10000, "id": "mobile","bn":0 },
-   
-  
-    { "name": "Dell PC", "image": "./pic/c1.jpg", "description": "PC with high-quality sound", "price": 50000, "id": "pc" ,"bn":0},
-    { "name": "mac pro PC", "image": "./pic/c2.jpg", "description": "PC with high-quality sound", "price":11500, "id": "pc" ,"bn":0},
-
-    { "name": "samsung ultra 10 Phone", "image": "./pic/sam1.jpg", "description": "Smartphone with AMOLED display", "price": 10000, "id": "mobile","bn":0 },
-    { "name": "oppo ultra 12 ", "image": "./pic/sam2.jpg", "description": "Smartphone with AMOLED display", "price": 18000, "id": "mobile","bn":0 },
-    { "name": "oppo ultra  13", "image": "./pic/sam3.jpg", "description": "Smartphone with AMOLED display", "price": 19000, "id": "mobile","bn":0 },
-    { "name": "oppo ultra 5", "image": "./pic/sam4.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0 },
-    { "name": "iphone 13 pro", "image": "./pic/sam7.jpg", "description": "Smartphone with AMOLED display", "price": 260000, "id": "mobile","bn":0 }, 
-    { "name": "iphone X-max pro", "image": "./pic/sam6.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0 }, 
-  
-    { "name": "iphone X-max", "image": "./pic/sam5.jpg", "description": "Smartphone with AMOLED display", "price": 14000, "id": "mobile","bn":0 },
-]
+    { "name": "HP Laptop", "image": "./pic/pexels-craigmdennis-205421.jpg", "description": "Powerful laptop with i7 processor", "price":15000, "id": "laptop" ,"bn":0 ,rating:0       },
+    { "name": "Dell Laptop", "image": "./pic/lap2.jpg", "description": "Laptop with AMOLED display", "price":300000, "id": "laptop","bn":0                            ,rating:0       },
+    { "name": "ZBook Laptop", "image": "./pic/lap3.jpg", "description": "High-performance workstation laptop", "price":20000 , "id": "laptop","bn":0                  ,rating:0        },
+    { "name": "Dell Workstation", "image": "./pic/lap4.jpg", "description": "Professional-grade workstation", "price":3500, "id": "laptop","bn":0                     ,rating:0         },
+    { "name": "EBook Laptop", "image": "./pic/lap1.jpg", "description": "High-performance workstation laptop", "price": 22000, "id": "laptop","bn":0                  ,rating:0         },
+    { "name": "HP PC", "image": "./pic/c3.jpg", "description": "High-end PC with 24MP camera", "price": 25000, "id": "pc","bn":0                                      ,rating:0         },
+    { "name": "Samsung Phone", "image": "./pic/phone.jpg", "description": "Smartphone with AMOLED display", "price": 10000, "id": "mobile","bn":0                     ,rating:0         },         
+    { "name": "Dell PC", "image": "./pic/c1.jpg", "description": "PC with high-quality sound", "price": 50000, "id": "pc" ,"bn":0                                     ,rating:0        },
+    { "name": "mac pro PC", "image": "./pic/c2.jpg", "description": "PC with high-quality sound", "price":11500, "id": "pc" ,"bn":0                                   ,rating:0           },
+    { "name": "samsung ultra 10 Phone", "image": "./pic/sam1.jpg", "description": "Smartphone with AMOLED display", "price": 10000, "id": "mobile","bn":0             ,rating:0           },
+    { "name": "oppo ultra 12 ", "image": "./pic/sam2.jpg", "description": "Smartphone with AMOLED display", "price": 18000, "id": "mobile","bn":0                     ,rating:0            },
+    { "name": "oppo ultra  13", "image": "./pic/sam3.jpg", "description": "Smartphone with AMOLED display", "price": 19000, "id": "mobile","bn":0                     ,rating:0              },
+    { "name": "oppo ultra 5", "image": "./pic/sam4.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0                       ,rating:0                },
+    { "name": "iphone 13 pro", "image": "./pic/sam7.jpg", "description": "Smartphone with AMOLED display", "price": 260000, "id": "mobile","bn":0                     ,rating:0                }, 
+    { "name": "iphone X-max pro", "image": "./pic/sam6.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0                   ,rating:0               },    
+    { "name": "iphone X-max", "image": "./pic/sam5.jpg", "description": "Smartphone with AMOLED display", "price": 14000, "id": "mobile","bn":0                       ,rating:0                  },
+]     
+if(!localStorage.getItem("allproducts")){
+  localStorage.setItem("allproducts", JSON.stringify(products));
+}
 
 
 let product_list=[]
 
 let localList=[];
+
 if(( localStorage.getItem(("productList")))!= null){
 
       localList=JSON.parse(localStorage.productList);
+      console.log(productList)
     }else{
        locallist=[];
     }
 product_list.clear;
-product_list=products
+product_list= JSON.parse(localStorage.getItem("allproducts"))
+
 // عرض المنتجات على الصفحة
  let productsList = document.getElementById("product");
 
 
+
 function mobile(){
        let sort_array=[];
-       for(let i=0; i<products.length;i++){
-        if(products[i].id=="mobile"){
-        sort_array.push(products[i]);
+       for(let i=0; i<(  JSON.parse(localStorage.getItem("allproducts"))).length;i++){
+        if( JSON.parse(localStorage.getItem("allproducts"))[i].id=="mobile"){
+        sort_array.push( JSON.parse(localStorage.getItem("allproducts"))[i]);
        }
        product_list.clear;
        product_list=sort_array
@@ -788,11 +790,11 @@ console.log("mobile")
 
 function pc(){
   let sort_array=[];
-       for(let i=0; i<products.length;i++){
-        if(products[i].id=="pc"){
-          sort_array.push(products[i]);
+       for(let i=0; i<(  JSON.parse(localStorage.getItem("allproducts"))).length;i++){
+        if( JSON.parse(localStorage.getItem("allproducts"))[i].id=="pc"){
+          sort_array.push( JSON.parse(localStorage.getItem("allproducts"))[i]);
         }
-     
+    
        }
       
        displayProducts(sort_array)
@@ -802,9 +804,9 @@ function pc(){
 }
 function laptop(){
   let sort_array=[];
-       for(let i=0; i<products.length;i++){
-        if(products[i].id=="laptop"){
-          sort_array.push(products[i]);
+       for(let i=0; i<( JSON.parse(localStorage.getItem("allproducts"))).length;i++){
+        if((  JSON.parse(localStorage.getItem("allproducts")))[i].id=="laptop"){
+          sort_array.push((  JSON.parse(localStorage.getItem("allproducts")))[i]);
         }
        
        }
@@ -816,34 +818,69 @@ function laptop(){
 }
 
 
-
-
+let detail=[]
 function displayProducts(product) {
-    productsList.innerHTML =""; // مسح المنتجات القديمة
-
-    for(let i=0; i<product.length;i++){
+    productsList.innerHTML = ""; // مسح المنتجات القديمة
+    
+    for (let i = 0; i < product.length; i++) {
         let productHTML = `
-            <div  class=" col-md-6 col-lg-4">
-                <div class="chill card mb-3  bg-white product">
-                    <img src="${product[i].image}" class="card-img-top">
+            <div class="col-md-6 col-lg-4">
+                <div class="chill card mb-3 bg-white product">
+                    <a href="productDetails.html"><img onclick="d(${i})" src="${product[i].image}" class="card-img-top"></a>
                     <div class="card-body">
                         <h5 class="text-black">${product[i].name}</h5>
-                        <p style="color:#c4945d
-                         ; font-weight: 700;" >${product[i].description}</p>
+                        <p style="color:#c4945d; font-weight: 700;">${product[i].description}</p>
                         <p style="color: green; font-weight: 700;">${product[i].price}</p>
-                        <p  class="btn custom-btn " onclick="Add(${i})"><span class="me-2"> add to cart </span><i class="fa-solid fa-cart-shopping"></i></p>
-
+                        <p class="btn custom-btn" onclick="Add(${i})"><span class="me-2">add to cart</span><i class="fa-solid fa-cart-shopping"></i></p>
+                        <div class="container stars-container" data-index="${i}">
+                            <span class="star fs-5" data-value="1">&#9733;</span>
+                            <span class="star fs-5" data-value="2">&#9733;</span>
+                            <span class="star fs-5" data-value="3">&#9733;</span>
+                            <span class="star fs-5" data-value="4">&#9733;</span>
+                            <span class="star fs-5" data-value="5">&#9733;</span>
+                        </div>
                     </div>
                 </div>
             </div>
         `;
-        productsList.innerHTML+=productHTML;
-    };
+
+        productsList.innerHTML += productHTML;
+
+        // تحديث النجوم بعد إضافة العنصر إلى DOM
+        setTimeout(() => {
+            updateStars(i, product[i].rating);
+        }, 0);
+    }
+
+    detail = product;
+}
+
+// تحديث النجوم بناءً على التقييم المخزن
+function updateStars(index, rating) {
+    let starsContainer = document.querySelector(`.stars-container[data-index="${index}"]`);
+    if (starsContainer) {
+        starsContainer.querySelectorAll(".star").forEach(star => {
+            let starValue = parseInt(star.getAttribute("data-value"));
+            star.style.color = starValue <= rating ? "gold" : "gray";
+        });
+    }
+}
+
+
+function d(i){
+     
+    list=[]
+     console.log(i)
+     console.log(detail[i])
+     list.push(detail[i])
+     
+    localStorage.setItem("detail", JSON.stringify(list));
+    //  localStorage.setItem("product",i)
 }
 
 // تشغيل الدالة عند تحميل الصفحة
-displayProducts(products);
-
+displayProducts( JSON.parse(localStorage.getItem("allproducts")));
+console.log(JSON.parse(localStorage.getItem("allproducts")))
 // البحث عن المنتجات
 
 
@@ -908,6 +945,7 @@ else{
 displayProducts(arr);
 }
 }
+
 
 function Add(x) {
 

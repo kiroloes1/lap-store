@@ -18,7 +18,7 @@
         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>confirm</title>
 </head>
 
 
@@ -132,7 +132,24 @@ body::-webkit-scrollbar{
 
 }
 
+/* تنسيق النجوم */
+.star {
+    font-size: 24px;
+    cursor: pointer;
+    color: gray; /* اللون الافتراضي */
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
 
+/* عند تحريك الماوس فوق النجوم */
+.star:hover {
+    transform: scale(1.2);
+    color: gold;
+}
+
+/* عند الضغط على النجوم يتم تلوينها */
+.star.selected {
+    color: gold;
+}
 
 
 
@@ -170,9 +187,144 @@ body::-webkit-scrollbar{
 
 
     <div class="container mt-5 d">
-        <h2 class="text-center mb-4">confirm your Order </h2>
-        <form onsubmit="sendEmail(event)" class="row justify-content-center border p-5 bg-body-tertiary">
-            <div class="mb-3 col-md-6">
+       
+    
+    </div>
+    <div class="m-5"></div>
+    <div class="container mt-5 p-5">
+        <h2 class="text-center">Customer Reviews</h2>
+        <table class="table table-bordered text-center mt-3">
+            <thead class="table-dark">
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                </tr>
+            </thead>
+            
+            <tbody id="reviewsTable"></tbody>
+        </table>
+    
+        <!-- Form to Add Review -->
+        <h4 class="mt-4">Leave a Review</h4>
+        <form id="reviewForm">
+            <div class="mb-3">
+                <input type="text" id="customerName" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="mb-3">
+                <textarea id="customerReview" class="form-control" placeholder="Your Review" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label>Rating:</label>
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+            <button type="submit" class="btn btn-dark">Submit Review</button>
+        </form>
+    </div>
+
+
+         <!-- sweetAlert2 (library) -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+ <script>
+
+let selectedRating;
+let update= JSON.parse(localStorage.getItem("allproducts"));
+let value=0;
+let Rating= localStorage.getItem("productRating") || 0;
+function x(list,index ,selectedRating){
+
+
+for(let i=0;i<update.length;i++){
+if((list[index].name==update[i].name)){
+console.log("k")
+let Z=[]
+
+
+update[i].rating=+selectedRating;
+
+}
+}
+localStorage.setItem("allproducts", JSON.stringify(update));
+}
+ 
+    document.addEventListener("DOMContentLoaded", function () {
+        emailjs.init("1sHuuplna5AR2vMrO"); // تأكد من استبداله بالمفتاح الصحيح
+    
+        let details = document.querySelector(".detailsProduct");
+        
+        let list, index;
+    
+        if (!localStorage.getItem("index")) {
+            list = JSON.parse(localStorage.getItem("detail"));
+            index = 0;
+            list[0].bn += 1;
+        } else {
+            list = JSON.parse(localStorage.getItem("productX"));
+            index = localStorage.getItem("index");
+        }
+    
+        display(list, index);
+
+
+    
+        function display(list, index) {
+               // تحديث النجوم عند الاختيار
+    document.querySelectorAll(".star").forEach(star => {
+        star.addEventListener("click", function () {
+            selectedRating =+(this.getAttribute("data-value"));
+            updateStars(selectedRating);
+            x(list,index ,selectedRating)
+        });
+
+        star.addEventListener("mouseover", function () {
+            updateStars(this.getAttribute("data-value"));
+        });
+
+        star.addEventListener("mouseleave", function () {
+            updateStars(selectedRating);
+            console.log(+selectedRating)
+        });
+    });
+
+    function updateStars(value) {
+        document.querySelectorAll(".star").forEach(star => {
+            star.classList.toggle("active", star.getAttribute("data-value") <= value);
+        });
+    }
+
+
+            
+            details.innerHTML = "";
+            let table = `
+                <h2 class="text-center mb-4">Order Details</h2>
+                <form id="orderForm" class="row border p-5 bg-body-tertiary">
+                    <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4">
+                        <p> <span> Product Name : </span>${list[index].name} </p>
+                    </div>
+                    <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4">
+                        <p> <span> Product Count :</span> ${list[index].bn} </p>
+                    </div>
+                    <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4">
+                        <p> <span> Product Price :</span> ${list[index].price} </p>
+                    </div>
+                    <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4">
+                        <p> <span> Total Price : </span>${list[index].price * list[index].bn} </p>
+                    </div>
+                    <div class="mb-3 col-md-12 border pt-3 d-flex justify-content-center rounded-4">
+                        <p> <span> Category :</span> ${list[index].id} </p>
+                    </div>
+    
+                    <!-- إدخال بيانات العميل -->
+                   
+                     <h2 class="text-center mb-4 mt-5">confirm your Order </h2>
+                         <div class="mb-3 col-md-6">
                 <label for="name" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
             </div>
@@ -210,151 +362,82 @@ body::-webkit-scrollbar{
             <div class="text-center">
                 <button type="submit" class="btn btn-dark px-5">Submit</button>
             </div>
-        </form>
-    </div>
-    
-
-
-         <!-- sweetAlert2 (library) -->
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
- <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
- <script>
-
-
-
-
-   
-let list=[]
-let details=document.querySelector(".detailsProduct")
-list=JSON.parse(localStorage.getItem("productX"));
-let index=localStorage.index;
-(function() {
-        emailjs.init("1sHuuplna5AR2vMrO"); // Replace with your Public Key
-    })();
-
-    function sendEmail(event) {
-        event.preventDefault(); // Prevent page reload
-
-        // Extract form data
-        const form = document.querySelector("form");
-        const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            whatsapp: document.getElementById("whatsapp").value,
-            address: document.getElementById("address").value,
-            delivery_date: document.getElementById("delivery-date").value,
-            delivery_location: document.getElementById("delivery-location").value,
-            alternative_location: document.getElementById("alternative-location").value,
-            product_name:list[index].name,
-            product_type:list[index].id,
-            product_count:list[index].bn,
-            product_price:list[index].price,
-            total_price:(list[index].price)*(list[index].bn),
-        };
-
-        // Disable submit button while sending
-        const submitButton = document.querySelector("button[type='submit']");
-        submitButton.disabled = true;
-        submitButton.innerText = "Sending...";
-         
-        // Send data via EmailJS
-        emailjs.send("service_kpi033a", "template_qvz78in", formData)
-        .then(response => {
-            // Show success message
-            Swal.fire({
-                title: "Sent!",
-                text: "Your order has been sent successfully!",
-                icon: "success",
-                confirmButtonText: "OK",
-                confirmButtonColor: "green",
-            });
-           document.getElementById("name").value =""
-       document.getElementById("email").value=""
-         document.getElementById("whatsapp").value=""
-       document.getElementById("delivery-date").value=""
-        document.getElementById("delivery-location").value=""
-        document.getElementById("alternative-location").value=""
-        document.getElementById("address").value=""
-
-         list[index].bn=0;
-         localStorage.setItem("productX", JSON.stringify(list))
-
-
-
-            
-        })
-        .catch(error => {
-            // Show error message
-            Swal.fire({
-                title: "Error",
-                text: "Something went wrong while sending your order. Please try again.",
-                icon: "error",
-                confirmButtonText: "OK",
-                confirmButtonColor: "red",
-            });
-            console.error("Error:", error);
-        })
-        .finally(() => {
-            // Re-enable submit button after sending
-            submitButton.disabled = false;
-            submitButton.innerText = "Submit";
-        });
-    }
-
-
- 
-   
- list=JSON.parse(localStorage.getItem("productX"));
- console.log(list[index].price+1)
-    console.log(index)
-    
-
-    details.innerHTML="";
-    let table =`
-     <h2 class="text-center mb-4">Order Details</h2>
-                <form class="row  border p-5 bg-body-tertiary">
-            <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4 ">
-            <p> 
-              <span> Product Name : </span>${list[index].name}
-            </p>
-            </div>
-    
-            <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4 ">
-               <p> 
-            <span>   Product Count :</span> ${list[index].bn}
-            </p>
-            </div>
+                </form>
+                
+            `;
+            details.innerHTML += table;
            
-            <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4 ">
-               <p> 
-             <span>  Product Price :</span> ${list[index].price}
-            </p>
-            </div>
+            localStorage.removeItem("index");
     
-            <div class="mb-3 col-md-6 border pt-3 d-flex justify-content-center rounded-4 ">
-             <p > 
-             <span> Total Price : </span>${list[index].price *list[index].bn}
-            </p>
-            </div>
+            // أضف مستمع الحدث عند إنشاء الفورم
+            document.getElementById("orderForm").addEventListener("submit", sendEmail);
+
+
+  console.log( JSON.parse(localStorage.getItem("allproducts")))
+        }
     
-            <div class="mb-3 col-md-12   border pt-3 d-flex justify-content-center rounded-4 ">
-            <p> 
-             <span> Geategory :</span> ${list[index].id}
-            </p>
-            </div>
-            
+        function sendEmail(event) {
+            event.preventDefault(); // منع إعادة تحميل الصفحة
     
-          
+            // استخراج بيانات الفورم
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                whatsapp: document.getElementById("whatsapp").value,
+                address: document.getElementById("address").value,
+                delivery_date: document.getElementById("delivery-date").value,
+                delivery_location: document.getElementById("delivery-location").value,
+                alternative_location: document.getElementById("alternative-location").value,
+                product_name: list[index].name,
+                product_type: list[index].id,
+                product_count: list[index].bn,
+                product_price: list[index].price,
+                total_price: list[index].price * list[index].bn,
+            };
     
-        </form>
+            // تعطيل الزر أثناء الإرسال
+            const submitButton = document.querySelector("button[type='submit']");
+            submitButton.disabled = true;
+            submitButton.innerText = "Sending...";
     
+            // إرسال البيانات عبر EmailJS
+            emailjs.send("service_kpi033a", "template_qvz78in", formData)
+                .then(response => {
+                    // نجاح الإرسال
+                    Swal.fire({
+                        title: "Sent!",
+                        text: "Your order has been sent successfully!",
+                        icon: "success",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "green",
+                    });
     
+                    // إعادة تعيين الفورم
+                    document.getElementById("orderForm").reset();
+                    list[index].bn = 0;
+                    localStorage.setItem("productX", JSON.stringify(list));
+                })
+                .catch(error => {
+                    // فشل الإرسال
+                    Swal.fire({
+                        title: "Error",
+                        text: "Something went wrong while sending your order. Please try again.",
+                        icon: "error",
+                        confirmButtonText: "OK",
+                        confirmButtonColor: "red",
+                    });
+                    console.error("Error:", error);
+                })
+                .finally(() => {
+                    // إعادة تمكين الزر بعد الإرسال
+                    submitButton.disabled = false;
+                    submitButton.innerText = "Submit";
+                });
+        }
+    });
+
+
+    </script>
     
-    
-    `;
-    details.innerHTML += table;
- </script>
 </body>
 </html>

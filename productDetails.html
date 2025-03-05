@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LapStore - Product Carousel</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+              *{
+        font-family: "Lexend", sans-serif;
+        
+      }
+      .navbar i{
+        margin-right:3vh;
+        font-size: xx-large;
+        
+      }
+      nav{
+        background-color:rgb(3, 32, 49) ;
+      }
+      .navbar-brand {
+        margin-right: -70px;
+      }
+     
+      .login
+    {
+     background-color: #f1d29a ;
+     color:rgb(104, 24, 24);
+     font-size: large;
+     font-weight: 700;
+    }
+    .login:hover{
+      background-color: rgb(184, 176, 153);
+      color: rgb(104, 24, 24);
+      font-weight: 700;
+    }
+    i{
+      color: #f1d29a;
+    }
+   nav i:hover{
+      cursor: pointer;
+      scale: 1.1;
+      
+    }
+    .search{
+      background-color:#f1d39ad0 ;
+      color: #000;
+
+    }
+    .search::placeholder{
+
+     
+      color:rgb(240, 228, 228);
+      font-size: large;
+    }
+    .search:focus{
+           
+      color: #ffffff;;
+      font-size: large;
+      background-color: #ffffff;
+    }
+        .carousel-item img {
+            height: 500px; /* تعديل ارتفاع الصور */
+            object-fit: cover;
+        }
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .carousel-item img {
+    height: 600px; /* يمكنك ضبط الارتفاع كما يناسبك */
+    width: 200%; /* تأكد من أن الصورة تمتد بعرض الكاروسيل */
+    object-fit: contain; /* عرض الصورة بالكامل داخل الإطار */
+    background-color: black; /* إضافة خلفية سوداء حتى لا تظهر فراغات بيضاء حول الصورة */
+}
+
+
+    </style>
+</head>
+<body>
+<!-- start navbar  -->
+
+<nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
+    <div class="container">
+     <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a> 
+      <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
+      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       <div class="w-75"></div>
+        <form class="d-flex" role="search">
+         
+          <a href="#product_section"  ><i class="fa-solid fa-magnifying-glass my-2 me-5 ms-1"></i></a>
+          <a href="./login.html" class="login btn  rounded-3 fw-medium px-3 ">login</a>
+        </form>
+      </div>
+    </div>
+  </nav>
+  <!-- end navbar -->
+
+    <div class="header border-3 rounded-2 border-black"></div>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Product Details</h2>
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Count</th>
+                    <th>Price</th>
+                    <th>Total Price</th>
+                    <th>Seller</th>
+                    <th>Rating</th>
+                </tr>
+            </thead>
+            <tbody class="table1">
+            
+            </tbody>
+        </table>
+    </div>
+
+
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+    <script>
+    
+    let table=document.querySelector(".table1")
+// عرض المنتجات على الصفحة
+let productsList=[]
+ productsList =JSON.parse(localStorage.getItem("detail"));
+ console.log(productsList.image)
+
+
+ function display(){
+    let header = document.querySelector(".header"); // Make sure you have an element with the id 'header'
+    
+    let product= `
+    
+
+
+       <div class="container mt-5  ">
+            <div class="row">
+                <!-- صورة المنتج -->
+                <div class="col-md-6">
+                    <img src="${productsList[0].image}" class="img-fluid" alt="${productsList[0].name}">
+                </div>
+                
+                <!-- تفاصيل المنتج -->
+                <div class="col-md-6">
+                    <h2>${productsList[0].name}</h2>
+                    <p class="text-muted">${productsList[0].description}</p>
+                    <h4 class="text-primary">Price: ${productsList[0].price} EGP</h4>
+                    <!-- زر الشراء -->
+                    <a href="confirm.html"><button class="btn btn-success mt-3">Buy Now</button></a> 
+                </div>
+
+            </div>
+            
+        </div>
+
+    `;
+    
+    header.innerHTML+= product; // Appends the carousel HTML to the selected header element\
+    console.log(1)
+
+    let tab=`
+        <tr>
+                    <td id="product-name">${productsList[0].name}</td>
+                    <td id="product-category">${productsList[0].id}</td>
+                    <td id="product-count">${productsList[0].bn+1}</td>
+                    <td id="product-price">${productsList[0].price}</td>
+                    <td id="total-price">${productsList[0].price}</td>
+                    <td>Eng/Kiroloes Reda</td>
+                    <td>
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </td>
+                </tr>
+    `;
+    table.innerHTML=tab;
+  
+}
+
+
+    display();
+
+    
+    </script>
+
+</body>
+</html>
