@@ -180,7 +180,7 @@ function displayProducts() {
                 <div class="card mb-3 w-100 bg-white d-flex flex-lg-row justify-content-between align-items-center">
                     <div class="card-body container text-center  text-lg-start ">
                         <h5 class="text-black">Product Name: <span class="text-black-50">${product[i].name}</span></h5>
-                        <p style="color: green; font-weight: 700;">${product[i].price}</p>
+                        <p style="color: green; font-weight: 700;">${product[i].price}  ${product[i].rating}</p>
                         <p style="color: green; font-weight: 700;">Quantity: ${product[i].bn}</p>
                        <div class="my-2">
                           <button class="btn btn-dark m-1 px-3" onclick="add(${i})"><i class="fa-solid fa-cart-plus"></i></button>
