@@ -78,6 +78,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
      color:rgb(104, 24, 24);
      font-size: large;
      font-weight: 700;
+     display: flex;
+     align-self: center;
     }
     .login:hover{
       background-color: rgb(184, 176, 153);
@@ -95,6 +97,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     .search{
       background-color:#f1d39ad0 ;
       color: #000;
+      display: flex;
+      align-self: center;
 
     }
     .search::placeholder{
@@ -155,6 +159,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
 
 
       }
+    
       .feature i{
          left: 50vh;
          transform: translateX(-50%);
@@ -449,7 +454,7 @@ color: #000;
             </ul>
             <form class="d-flex" role="search">
               <input onkeyup="search()"  class="form-control me-2 rounded-4 search" placeholder="Search" aria-label="Search">
-              <a href="#product_section"  ><i class="fa-solid fa-magnifying-glass my-2 me-5 ms-1"></i></a>
+              <a href="#product_section"  ><i class="fa-solid fa-magnifying-glass my-4 me-5 ms-1 fs-5"></i></a>
               <a href="./login.html" class="login btn  rounded-3 fw-medium px-3 ">login</a>
             </form>
           </div>
@@ -559,7 +564,7 @@ color: #000;
               <div class="d-flex m-1 d-flex justify-content-between"> <span>0EG</span> <span>50000EG</span></div>
                <div class="progress-bar ">
                   
-                <input onmouseup="add() " type="range" min="0" max="50000" value="50000" class="price-range w-100 py-2" id="priceRange">
+                <input onclick="add()" type="range" min="0" max="50000" value="50000" class="price-range w-100 py-2" id="priceRange">
             
                 
            </div> 
@@ -793,13 +798,26 @@ function sendEmail(event) {
     });
 }
 
-
+let sort;
 let displayText=document.querySelector(".progress1");
 let priceRange=document.querySelector(".price-range");
 function add(){
   console.log(priceRange.value)
   displayText.innerHTML=priceRange.value
-  displayProducts(JSON.parse(localStorage.getItem("allproducts")))
+
+   if(sort==1){
+    displayProducts(JSON.parse(localStorage.getItem("mobile1")))
+   }
+   else if(sort==2){
+    displayProducts(JSON.parse(localStorage.getItem("pc1")))
+   }
+   else if(sort==3)
+
+   displayProducts(JSON.parse(localStorage.getItem("lap1")))
+  else
+    displayProducts(JSON.parse(localStorage.getItem("allproducts")))
+    
+ 
 }
 
 const products = [
@@ -853,11 +871,14 @@ function mobile(){
        product_list.clear;
        product_list=sort_array
        
+       localStorage.setItem("mobile1", JSON.stringify(sort_array));
        
        
 }
 displayProducts(sort_array)
+
 console.log("mobile")  
+     sort=1
 }
 
 function pc(){
@@ -873,6 +894,9 @@ function pc(){
        product_list.clear;
        product_list=sort_array
        console.log("pc")
+       
+       localStorage.setItem("pc1", JSON.stringify(sort_array));
+       sort =2;
 }
 function laptop(){
   let sort_array=[];
@@ -887,6 +911,9 @@ function laptop(){
        console.log("lap")
        product_list.clear;
        product_list=sort_array
+      
+       localStorage.setItem("lap1", JSON.stringify(sort_array));
+       sort =3
 }
 
 
@@ -895,6 +922,10 @@ function displayProducts(product) {
     productsList.innerHTML = ""; // مسح المنتجات القديمة
     
     for (let i = 0; i < product.length; i++) {
+
+     
+
+
       if(priceRange.value>=product[i].price){
         
       console.log("im here")
