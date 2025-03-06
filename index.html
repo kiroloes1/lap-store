@@ -369,10 +369,48 @@ color: #000;
 .customer{
   overflow-x: scroll;
 }
-
-
-      
-      
+.slider-container {
+            width: 300px;
+            margin: auto;
+            position: relative;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+         
+            transform: translateY(-50%);
+            border-radius: 4px;
+        }
+        .progress {
+            height: 8px;
+            background: #000000;
+            border-radius: 4px;
+            width: 0%;
+        }
+        .price-range {
+            width: 100%;
+           
+           
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+        }
+        .price-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 30px;
+            height: 20px;
+            background: #000000;
+            border-radius: 50%;
+            cursor: pointer;
+            padding: 3px;
+            
+        }
+        .price-value {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
 
     /* .landing img{
       margin-right: -5vh;
@@ -509,7 +547,27 @@ color: #000;
         <div class="mb-5">
           <div class="d-flex" >
             <input class="form-control me-2 search"  onkeyup="search()" id="searchBox" placeholder="Search" aria-label="Search">
+            
             <button class=" login btn" onclick="confirm1()"  >Search</button>
+
+        
+          </div>
+          <div>
+           
+            <div class="slider-container ">
+              <h6 class="text-dark text-center m-2">Select Price Range</h6>
+              <div class="d-flex m-1 d-flex justify-content-between"> <span>0EG</span> <span>50000EG</span></div>
+               <div class="progress-bar ">
+                  
+                <input onmouseup="add() " type="range" min="0" max="50000" value="50000" class="price-range w-100 py-2" id="priceRange">
+            
+                
+           </div> 
+             
+                    
+           <div ><p class="progress1  bg-black border-3 rounded-3 m-1 d text-center align-content-center" >50000</p></div>
+               
+            </div>
           </div>
         </div>
       </nav>
@@ -521,6 +579,11 @@ color: #000;
             <li  onclick="mobile()"> <i class="fa-solid fa-mobile-screen mx-1"></i>mobile</li>
           </ul>
         </div>
+<div>
+
+  
+
+</div>
 <!-- product -->
 
 
@@ -730,9 +793,18 @@ function sendEmail(event) {
     });
 }
 
+
+let displayText=document.querySelector(".progress1");
+let priceRange=document.querySelector(".price-range");
+function add(){
+  console.log(priceRange.value)
+  displayText.innerHTML=priceRange.value
+  displayProducts(JSON.parse(localStorage.getItem("allproducts")))
+}
+
 const products = [
     { "name": "HP Laptop", "image": "./pic/pexels-craigmdennis-205421.jpg", "description": "Powerful laptop with i7 processor", "price":15000, "id": "laptop" ,"bn":0 ,rating:0       },
-    { "name": "Dell Laptop", "image": "./pic/lap2.jpg", "description": "Laptop with AMOLED display", "price":300000, "id": "laptop","bn":0                            ,rating:0       },
+    { "name": "Dell Laptop", "image": "./pic/lap2.jpg", "description": "Laptop with AMOLED display", "price":30000, "id": "laptop","bn":0                            ,rating:0       },
     { "name": "ZBook Laptop", "image": "./pic/lap3.jpg", "description": "High-performance workstation laptop", "price":20000 , "id": "laptop","bn":0                  ,rating:0        },
     { "name": "Dell Workstation", "image": "./pic/lap4.jpg", "description": "Professional-grade workstation", "price":3500, "id": "laptop","bn":0                     ,rating:0         },
     { "name": "EBook Laptop", "image": "./pic/lap1.jpg", "description": "High-performance workstation laptop", "price": 22000, "id": "laptop","bn":0                  ,rating:0         },
@@ -744,7 +816,7 @@ const products = [
     { "name": "oppo ultra 12 ", "image": "./pic/sam2.jpg", "description": "Smartphone with AMOLED display", "price": 18000, "id": "mobile","bn":0                     ,rating:0            },
     { "name": "oppo ultra  13", "image": "./pic/sam3.jpg", "description": "Smartphone with AMOLED display", "price": 19000, "id": "mobile","bn":0                     ,rating:0              },
     { "name": "oppo ultra 5", "image": "./pic/sam4.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0                       ,rating:0                },
-    { "name": "iphone 13 pro", "image": "./pic/sam7.jpg", "description": "Smartphone with AMOLED display", "price": 260000, "id": "mobile","bn":0                     ,rating:0                }, 
+    { "name": "iphone 13 pro", "image": "./pic/sam7.jpg", "description": "Smartphone with AMOLED display", "price": 26000, "id": "mobile","bn":0                     ,rating:0                }, 
     { "name": "iphone X-max pro", "image": "./pic/sam6.jpg", "description": "Smartphone with AMOLED display", "price": 16000, "id": "mobile","bn":0                   ,rating:0               },    
     { "name": "iphone X-max", "image": "./pic/sam5.jpg", "description": "Smartphone with AMOLED display", "price": 14000, "id": "mobile","bn":0                       ,rating:0                  },
 ]     
@@ -823,6 +895,9 @@ function displayProducts(product) {
     productsList.innerHTML = ""; // مسح المنتجات القديمة
     
     for (let i = 0; i < product.length; i++) {
+      if(priceRange.value>=product[i].price){
+        
+      console.log("im here")
         let productHTML = `
             <div class="col-md-6 col-lg-4">
                 <div class="chill card mb-3 bg-white product">
@@ -851,6 +926,7 @@ function displayProducts(product) {
             updateStars(i, product[i].rating);
         }, 0);
     }
+  }
 
     detail = product;
 }
