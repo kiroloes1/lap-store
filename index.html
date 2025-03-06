@@ -486,6 +486,8 @@ color: #000;
             </form>
           </div>
         </div>
+     
+   
       </nav>
       <!-- end navbar -->
 
@@ -591,7 +593,7 @@ color: #000;
               <div class="d-flex m-1 d-flex justify-content-between"> <span>0EG</span> <span>50000EG</span></div>
                <div class="progress-bar ">
                   
-                <input onclick="add()" type="range" min="0" max="50000" value="50000" class="price-range w-100 py-2" id="priceRange">
+                <input onclick="add()" onchange="add()" type="range" min="0" max="50000" value="50000" class="price-range w-100 py-2" id="priceRange">
             
                 
            </div> 
@@ -619,7 +621,7 @@ color: #000;
 <!-- product -->
 
 
-        <div id="product" class="product p-3  d-flex justify-items-center  mx-5 row  ">
+        <div id="product" class="product p-3  d-flex justify-items-center  mx-3 row  ">
 
 
 
@@ -779,6 +781,8 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
         <script >
     // قائمة المنتجات
 
+
+    
 (function () {
   emailjs.init("1sHuuplna5AR2vMrO"); // ضع الـ User ID الخاص بك من EmailJS
 })();
@@ -961,6 +965,7 @@ function displayProducts(product) {
                 <div class="chill card mb-3 bg-white product">
                     <a href="productDetails.html"><img onclick="d(${i})" src="${product[i].image}" class="card-img-top"></a>
                     <div id="paper-container"></div>
+                    
                     <div class="card-body">
                                
 
