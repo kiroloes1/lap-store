@@ -71,7 +71,7 @@
 
     @media (min-width: 900px) and (max-width: 1065px) {
     .navbar {
-        width: 105%;
+        width: 100%;
     }
 }
     .navbar-nav a{
@@ -125,6 +125,22 @@
   body::-webkit-scrollbar-thumb:hover{
     background-color: rgb(200, 150, 20);
 }
+.use{ 
+  background-color:#f1d39ad0 ;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10vh;
+  
+}
+.user{
+  text-align: center;
+
+  margin:40px;
+}
 
   
     </style>
@@ -135,8 +151,10 @@
 <!-- start navbar  -->
 
 <nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
+
     <div class="container">
-    
+      <div class="use">
+      <p class="user text-white">default</p></div>
       <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
       <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -146,7 +164,7 @@
         <form class="d-flex" role="search">
           <input class="form-control me-2 rounded-4 search" type="search" placeholder="Search" aria-label="Search">
           <div><i class="fa-solid fa-magnifying-glass my-2 me-5 ms-1 "></i></div>
-          <a href="./login.html" class="login btn  rounded-3 fw-medium px-3 ">login</a>
+       
         </form>
       </div>
     </div>
@@ -157,6 +175,29 @@
 
     </div>
     <script>
+      function user(){
+    let userData = localStorage.getItem("login");
+   let username=document.querySelector(".user")
+   let storedUser = JSON.parse(userData);
+
+if (!userData) {
+    Swal.fire({
+        title: "Error!",
+        text: "User not found, please sign up.",
+        icon: "error",
+        iconColor: "red",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#24242c",
+    });
+    console.log("No user found in localStorage.");
+    return;
+}
+      
+     username.innerHTML=storedUser.name
+
+
+      }
+      user();
 
 
 // تحميل المنتجات من `localStorage` أو تعيين مصفوفة فارغة إذا لم تكن موجودة

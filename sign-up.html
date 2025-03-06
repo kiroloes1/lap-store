@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-lap-Store</title>
+    <title>signUp-lap-Store</title>
     <link rel="icon" href="./pic/laptop.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -149,108 +149,125 @@
             <input class="form-control me-2 rounded-4 search" type="search" placeholder="Search" aria-label="Search">
             <div><i class="fa-solid fa-magnifying-glass my-2 me-5 ms-1 "></i></div>
            
-          </form>
         </div>
       </div>
 </nav>
 
 <!-- Login Form -->
-<div class="login-container ">
-    <h3 class="text-center mb-4">Login to Your Store</h3>
+<div class="login-container">
+    <h3 class="text-center mb-4">signUp to Your Store</h3>
     <form>
-        <div class="form-group my-5">
+        <div class="form-group my-4">
             <i class="fa fa-user"></i>
-            <input type="text" id="email" class="form-control" placeholder=" " required>
-            <label for="email">email</label>
+            <input type="text" id="username" class="form-control" placeholder=" " required>
+            <label for="username">Username</label>
         </div>
-        
+        <div class="form-group my-4">
+            <i class="fa fa-lock"></i>
+            <input type="email" id="email" class="form-control" placeholder=" " required>
+            <label for="email">Email</label>
+        </div>
 
-        <div class="form-group my-5">
+        <div class="form-group my-4">
             <i class="fa fa-lock"></i>
             <input type="password" id="password" class="form-control" placeholder=" " required>
             <label for="password">Password</label>
         </div>
+
+        <div class="form-group my-4">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="confirmpassword" class="form-control" placeholder=" " required>
+            <label for="confirmpassword">confirm Password</label>
+        </div>
         <div class="d-flex ">
-            <a onclick="login()"  class="btn btn-custom btn-login m-1">Login</a>
-            <a href="./sign-up.html" type="button" class="btn btn-custom btn-login m-1">SignUp</a>
+            <a onclick="signup()"  class="btn btn-custom btn-login m-1">Sign Up</a>
+           
         </div>
 
     </form>
 </div>
  <!-- sweetAlert2 (library) -->
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-
-function login() {
-    let userData = localStorage.getItem("login");
-
-    // التحقق مما إذا كانت بيانات المستخدم مخزنة
-    if (!userData) {
+        let password=document.querySelector("#password")
+        let confirmpassword=document.querySelector("#confirmpassword")
+        let username=document.querySelector("#username")
+        let email =document.querySelector("#email")
+        console.log(JSON.parse(localStorage.getItem("login")))
+        let list=[]
+        function signup() {
+    // التحقق من أن جميع الحقول ممتلئة
+    if (username.value.trim() === "" || password.value.trim() === "" || email.value.trim() === "" || confirmpassword.value.trim() === "") {
         Swal.fire({
             title: "Error!",
-            text: "User not found, please sign up.",
+            text: "Please fill all fields.",
             icon: "error",
             iconColor: "red",
             confirmButtonText: "OK",
             confirmButtonColor: "#24242c",
+            timer: 1000
         });
-        console.log("No user found in localStorage.");
+        return; // إيقاف تنفيذ باقي الكود
+    }
+
+    // التحقق من تطابق كلمتي المرور
+    if (password.value !== confirmpassword.value) {
+        Swal.fire({
+            title: "Error!",
+            text: "Passwords do not match.",
+            icon: "error",
+            iconColor: "red",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#24242c",
+            timer: 1000
+        });
+        console.log("Password mismatch");
         return;
     }
 
-    // تحويل البيانات المخزنة من JSON إلى كائن
-    let storedUser = JSON.parse(userData);
-
-    // الحصول على القيم التي أدخلها المستخدم
-    let enteredEmail = document.getElementById("email").value.trim();
-    let enteredPassword = document.getElementById("password").value.trim();
-
-    // التحقق مما إذا كانت الحقول فارغة
-    if (enteredEmail === "" || enteredPassword === "") {
+    // التحقق من طول كلمة المرور
+    if (password.value.length < 8 || confirmpassword.value.length < 8) {
         Swal.fire({
             title: "Error!",
-            text: "Please fill in all fields.",
+            text: "Password must be at least 8 characters long.",
             icon: "error",
             iconColor: "red",
             confirmButtonText: "OK",
             confirmButtonColor: "#24242c",
+            timer: 1000
         });
-        console.log("Empty fields detected.");
+        console.log("Password too short");
         return;
     }
 
-    // مقارنة البيانات المدخلة مع المخزنة
-    if (enteredEmail === storedUser.email && enteredPassword === storedUser.password) {
-        Swal.fire({
-            title: "Success!",
-            text: `Welcome back, ${storedUser.name}!`,
-            icon: "success",
-            iconColor: "green",
-            confirmButtonText: "OK",
-            confirmButtonColor: "#24242c",
-        });
+    // إنشاء كائن بيانات المستخدم
+    let login = {
+        name: username.value.trim(),
+        password: password.value.trim(),
+        email: email.value.trim()
+    };
 
-        console.log("Login successful!");
+    // تخزين بيانات المستخدم في localStorage
+    localStorage.setItem("login", JSON.stringify(login));
 
-        // إعادة توجيه المستخدم إلى الصفحة الرئيسية بعد تسجيل الدخول
-        setTimeout(() => {
-            location.href = "index.html"; // غيّر "home.html" إلى الصفحة المطلوبة
-        }, 1000);
-    } else {
-        Swal.fire({
-            title: "Error!",
-            text: "Incorrect email or password.",
-            icon: "error",
-            iconColor: "red",
-            confirmButtonText: "OK",
-            confirmButtonColor: "#24242c",
-        });
+    // عرض رسالة النجاح
+    Swal.fire({
+        title: "Success!",
+        text: `Welcome, ${username.value}!`,
+        icon: "success",
+        iconColor: "green",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#24242c",
+        timer: 2000
+    });
 
-        console.log("Login failed: incorrect email or password.");
-    }
+    // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول بعد ثانية
+    setTimeout(() => {
+        location.href = "login.html";
+    }, 1000);
 }
-
 
 </script>
 </body>
