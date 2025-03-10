@@ -416,6 +416,8 @@ localStorage.setItem("allproducts", JSON.stringify(update));
                     document.getElementById("orderForm").reset();
                     list[index].bn = 0;
                     localStorage.setItem("productX", JSON.stringify(list));
+
+                    localStorage.setItem("check", 1);
                 })
                 .catch(error => {
                     // فشل الإرسال
@@ -427,6 +429,7 @@ localStorage.setItem("allproducts", JSON.stringify(update));
                         confirmButtonColor: "red",
                     });
                     console.error("Error:", error);
+                    localStorage.setItem("check", 0);
                 })
                 .finally(() => {
                     // إعادة تمكين الزر بعد الإرسال

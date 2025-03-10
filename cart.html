@@ -219,7 +219,7 @@ function displayProducts() {
                 <div class="card mb-3 w-100 bg-white d-flex flex-lg-row justify-content-between align-items-center">
                     <div class="card-body container text-center  text-lg-start ">
                         <h5 class="text-black">Product Name: <span class="text-black-50">${product[i].name}</span></h5>
-                        <p style="color: green; font-weight: 700;">${product[i].price}  ${product[i].rating}</p>
+                        <p style="color: green; font-weight: 700;">${product[i].price}  EGP</p>
                         <p style="color: green; font-weight: 700;">Quantity: ${product[i].bn}</p>
                        <div class="my-2">
                           <button class="btn btn-dark m-1 px-3" onclick="add(${i})"><i class="fa-solid fa-cart-plus"></i></button>
@@ -243,9 +243,18 @@ function displayProducts() {
 function add(index) {
     product[index].bn += 1;
     updateProducts();
+    let cartCount;
+        cartCount= localStorage.getItem("num") ;
+        cartCount++;
+        localStorage.setItem("num",cartCount);
 }
 
 function sub(index) {
+  let cartCount;
+        cartCount= localStorage.getItem("num") ;
+        cartCount--;
+        localStorage.setItem("num",cartCount);
+      
     if (product[index].bn > 1) {
         product[index].bn -= 1;
     } else {
@@ -253,7 +262,12 @@ function sub(index) {
     }
     updateProducts();
 }
+
 function Delete(index){
+  let cartCount;
+        cartCount= localStorage.getItem("num") ;
+        cartCount=cartCount-product[index].bn;
+        localStorage.setItem("num",cartCount);
   updateProducts()
 console.log(4)
 product.splice(index,1)
@@ -264,6 +278,13 @@ function confirm(i){
   localStorage.setItem("index", index); 
  
   console.log(localStorage.index)
+  if(localStorage.check){
+    let cartCount;
+        cartCount= localStorage.getItem("num") ;
+        cartCount--;
+        localStorage.setItem("num",cartCount);
+  }
+ 
 }
 
 // تحديث `localStorage` وعرض المنتجات

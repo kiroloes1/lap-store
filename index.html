@@ -447,6 +447,57 @@ color: #000;
     /* .landing img{
       margin-right: -5vh;
     } */
+
+    /* styles.css */
+
+.cart-container {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+}
+
+.cart-icon {
+    font-size: 40px;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -2px;
+    right: 50px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 10px;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    z-index: 150;
+    font-weight: 700;
+    
+}
+.review{
+  overflow-x: auto;
+  display: flex;
+}
+.hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+nav li:hover{
+    background-color: gray;
+    border-radius: 3px;
+    margin: 0 2px;
+}
+
+
+
     </style>
 
 
@@ -457,7 +508,12 @@ color: #000;
 
       <nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
         <div class="container ">
-         <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a> 
+          <div class="cart-container">
+            <span class="cart-badge" id="cart-badge">0</span>
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping cart-icon"></i></a> 
+            
+          </div>
+        
           <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
           <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -470,6 +526,11 @@ color: #000;
               <li class="nav-item">
                 <a class="nav-link text-white text-white" href="#product_section">Service</a>
               </li>
+
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#offer_section">offer</a>
+              </li>
+
               <li class="nav-item">
                 <a class="nav-link text-white" href="#about_section">About</a>
               </li>
@@ -510,9 +571,45 @@ color: #000;
         </div>
       </div>
     </div>
+
+ 
+      <div id="offer_section" class="m-5 text-center"><h2>offer</h2></div>
+      <div class="container-fluid text-center  bg-light review my-5 p-3 animated2 ">
+      <!-- Three columns of text below the carousel -->
+      <div class="row ">
+        <div class="col-lg-4 ">
+          <img class="w-50 bd-placeholder-img rounded my-2 " width="140" height="140" src="./pic/c2.jpg" alt="">
+
+          <h2 class="fw-normal">computer</h2>
+          <p class="text-black-50">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+          <p><a class="btn btn-dark" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="w-50 bd-placeholder-img rounded my-2" width="140" height="140" src="./pic/lap1.jpg" alt="">
+          <h2 class="fw-normal">laptop</h2>
+          <p class="text-black-50">Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+          <p><a class="btn btn-dark" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="w-50 bd-placeholder-img rounded my-2" width="140" height="140" src="./pic/sam1.jpg" alt="">
+          <h2 class="fw-normal">Mobile</h2>
+          <p class="text-black-50">And lastly this, the third column of representative placeholder   content very high performance</p>
+          <p><a class="btn btn-dark" href="#">View details &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+        
+      </div><!-- /.row -->
+  
+  
+      <!-- START THE FEATURETTES -->
+  
+  
+  </div>
+  
+
+
 <div >
 <!-- feature -->
-    <div class="d-flex flex-column container" >
+    <div class="d-flex flex-column container animated3" >
       <div class="container">
         <div class="d-flex align-items-center my-5 flex-column start" >
           <div class="my-3">
@@ -621,7 +718,7 @@ color: #000;
 <!-- product -->
 
 
-        <div id="product" class="product p-3  d-flex justify-items-center  mx-3 row  ">
+        <div id="product" class="product p-3 animated d-flex justify-items-center  mx-3 row  ">
 
 
 
@@ -635,39 +732,32 @@ color: #000;
       </div>
     </div>
 <!-- about -->
-    <div class="container About  " id="about_section">
-      <h2 class="d-flex justify-content-center align-items-center m-5 about">About</h1>
-      <div class="row d-flex justify-content-center align-items-center">
-        
-        <!-- العمود الأول للنص -->
-        <div class="col-md-8 container mb-5 col-10">
-          <p class=" d-flex align-items-center container">
-            Welcome to our store, your one-stop destination for high-quality laptops, PCs, smartphones, 
-            and smart devices. We offer a carefully selected range of products from top brands like HP, Dell,
-             Samsung, and Oppo, ensuring performance, reliability, and great value for money.
+<div class="b-example-divider mt-5 "></div>
 
-Whether you're looking for a powerful workstation, a sleek laptop, or a
- feature-packed smartphone, we have something for everyone. Our mission is to provide 
- top-notch technology at competitive prices, along with excellent customer service.
-          </p>
-        </div>
-    
-        <!-- العمود الثاني للأنيميشن -->
-        <div class="col-md-4 d-flex justify-content-center ">
-          <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-          <dotlottie-player src="https://lottie.host/32dfddaa-8343-4034-8304-3ac9844ea860/CFXyy2yyav.lottie" background="transparent" 
-          speed="1" style="width: 250px; height: 300px" 
-          loop autoplay></dotlottie-player>
-        </div>
-    
+<div class="container py-5 my-5 animated4">
+  <div class="row align-items-center">
+      <div class="col-md-6">
+          <img src="https://th.bing.com/th/id/OIP.X4-YHHWZ_NiA39NoeT4ZNgHaHa?rs=1&pid=ImgDetMain" class="img-fluid rounded shadow" alt="About Us">
       </div>
-    </div>
+      <div class="col-md-6">
+          <h2 class="fw-bold">About Us</h2>
+          <p class="text-black">
+              We are a team dedicated to providing the best services and products to our customers.
+              Our mission is to ensure quality and excellence in everything we do.
+          </p>
+          <p class="text-black-50">
+              With years of experience in the industry, we continue to innovate and exceed expectations.
+          </p>
+          <a href="#" class="btn btn-dark">Learn More</a>
+      </div>
+  </div>
+</div>
 
 
 
 
     <!-- opinion customers -->
-    <section class="testimonials py-5 bg-light mt-5">
+    <section class="testimonials py-5 bg-light mt-5 animated5">
       <div class="container text-center w-100">
           <h2 class="mb-4">Customer Reviews</h2>
           <div class="customer g-4 d-flex flex-row">
@@ -713,7 +803,7 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
   </section>
   <!-- end opinion  -->
 <!-- contact -->
-    <div class="d-flex flex-column align-content-center contact " id="contact_section">
+    <div class="d-flex flex-column align-content-center contact animated6" id="contact_section">
       <h2 class="text-center mb-5">Contact Us</h2>
 
       <form onsubmit="sendEmail(event)" class="row justify-content-center">
@@ -742,7 +832,7 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
     </div>
 
     <!-- footer -->
-    <footer class="bg-dark text-light pt-4 pb-2   ">
+    <footer class="bg-dark text-light pt-4 pb-2 animated7  ">
       <div class="container">
         <div class="row">
           
@@ -777,9 +867,111 @@ Whether you're looking for a powerful workstation, a sleek laptop, or a
         <p class="text-center">&copy; 2025 Laptop Store. All rights reserved.</p>
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        
         <script >
     // قائمة المنتجات
+
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".animated", {
+        opacity: 1,
+        y: 50,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+            trigger: ".animated",
+            start: "top 80%",
+            end: "bottom 50%",
+            scrub: true // يجعل التأثير يحدث فقط عند التمرير
+        }
+    });
+
+    gsap.from(".animated2", {
+        opacity: 0,
+        x: -50,
+        duration: 1.2,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+            trigger: ".animated2",
+            start: "top 85%",
+            end: "bottom 50%",
+            scrub: true
+        }
+    });
+
+    gsap.from(".animated3", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1.3,
+        ease: "elastic.out(1, 0.5)",
+        scrollTrigger: {
+            trigger: ".animated3",
+            start: "top 75%",
+            end: "bottom 50%",
+            scrub: true
+        }
+    });
+
+    gsap.from(".animated4", {
+        opacity: 0,
+        rotation: -10,
+        y: 50,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+            trigger: ".animated4",
+            start: "top 90%",
+            end: "bottom 50%",
+            scrub: true
+        }
+    });
+
+    gsap.from(".animated5", {
+        opacity: 0,
+        x: 50,
+        duration: 1,
+        ease: "power1.out",
+        scrollTrigger: {
+            trigger: ".animated5",
+            start: "top 80%",
+            end: "bottom 50%",
+            scrub: true
+        }
+    });
+
+    gsap.from(".animated6", {
+        opacity: 0,
+        y: -50,
+        duration: 1.2,
+        ease: "circ.out",
+        scrollTrigger: {
+            trigger: ".animated6",
+            start: "top 85%",
+            end: "bottom 50%",
+            scrub: true
+        }
+    });
+
+    gsap.from(".animated7", {
+        opacity: 0,
+        rotation: 15,
+        scale: 0.9,
+        duration: 1,
+        ease: "expo.out",
+        scrollTrigger: {
+            trigger: ".animated7",
+            start: "top 75%",
+            end: "bottom 150%",
+            scrub: true
+        }
+    });
+});
+
 
 
     
@@ -971,7 +1163,7 @@ function displayProducts(product) {
 
                         <h5 class="text-black">${product[i].name}</h5>
                         <p style="color:#c4945d; font-weight: 700;">${product[i].description}</p>
-                        <p style="color: green; font-weight: 700;">${product[i].price}</p>
+                        <p style="color: green; font-weight: 700;">${product[i].price} EGP</p>
                         <p class="btn custom-btn" onclick=" Add(${i}) "><span class="me-2">add to cart</span><i class="fa-solid fa-cart-shopping"></i></p>
                         <div class="container stars-container" data-index="${i}">
                             <span class="star fs-5" data-value="1">&#9733;</span>
@@ -1142,13 +1334,26 @@ function Add(x) {
           paper.style.display = 'none'; // إخفاء الورقة بعد 1.5 ثانية
         }, 3000);
       }
+
+      // script.js
+      let cartCount;
+      if(!(localStorage.getItem("num"))){
+        cartCount=0;
+      }
+      else{
+        cartCount= localStorage.getItem("num") ;
+      }
+    
+
+
+    cartCount++;  // زيادة العدد عند إضافة عنصر
+    
+    document.getElementById("cart-badge").innerHTML =cartCount;
+    localStorage.setItem("num",cartCount);
+
     }
-
-
-
-
-
-
+    cartCount= localStorage.getItem("num") ;
+    document.getElementById("cart-badge").innerHTML =cartCount;
 
 
 
