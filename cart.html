@@ -172,24 +172,26 @@ margin-top: 1.5vh;
     <div class="cart_product w-100 container p-5">
 
     </div>
+         <!-- sweetAlert2 (library) -->
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       function user(){
     let userData = localStorage.getItem("login");
    let username=document.querySelector(".user")
    let storedUser = JSON.parse(userData);
 
-if (!userData) {
-    Swal.fire({
-        title: "Error!",
-        text: "User not found, please sign up.",
-        icon: "error",
-        iconColor: "red",
-        confirmButtonText: "OK",
-        confirmButtonColor: "#24242c",
-    });
-    console.log("No user found in localStorage.");
-    return;
-}
+// if (!userData) {
+//     Swal.fire({
+//         title: "Error!",
+//         text: "User not found, please sign up.",
+//         icon: "error",
+//         iconColor: "red",
+//         confirmButtonText: "OK",
+//         confirmButtonColor: "#24242c",
+//     });
+//     console.log("No user found in localStorage.");
+//     return;
+// }
       
      username.innerHTML=storedUser.name
 
