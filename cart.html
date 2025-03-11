@@ -177,8 +177,8 @@ margin-top: 1.5vh;
     <script>
       function user(){
     let userData = localStorage.getItem("login");
-   let username=document.querySelector(".user")
-   let storedUser = JSON.parse(userData);
+   
+   
 
 // if (!userData) {
 //     Swal.fire({
@@ -193,7 +193,7 @@ margin-top: 1.5vh;
 //     return;
 // }
       
-     username.innerHTML=storedUser.name
+     document.querySelector(".user").innerHTML=JSON.parse(userData).name
 
 
       }
