@@ -16,6 +16,29 @@
         referrerpolicy="no-referrer"
       />
     <style>
+        
+.cart-container {
+    position: relative;
+    display: inline-block;
+    font-size: 40px;
+}
+        .cart-badge {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    font-size: 10px;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    z-index: 150;
+    font-weight: 700;
+    
+}
               *{
         font-family: "Lexend", sans-serif;
         
@@ -273,6 +296,7 @@
 
 <nav class="navbar bg-dark navbar-expand-lg position-fixed-lg ">
     <div class="container ">
+        <span class="cart-badge" id="cart-badge">0</span>
      <a href="cart.html" ><i class="align-content-center  fa-solid fa-cart-shopping"></i></a> 
       <a  class="navbar-brand  " href="./index.html"><img class="w-50 "  src="./pic/pic_log.png " alt="logo"></a>
     
@@ -389,7 +413,8 @@ let productsList=[]
     table.innerHTML=tab;
   
 }
-
+cartCount= localStorage.getItem("num") ;
+document.getElementById("cart-badge").innerHTML =cartCount;
 
     display();
 
