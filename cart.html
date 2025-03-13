@@ -174,22 +174,11 @@ margin-top: 1.5vh;
     </div>
     <script>
       function user(){
-    let userData = localStorage.getItem("login");
+  
    let username=document.querySelector(".user")
    let storedUser = JSON.parse(userData);
 
-if (!userData) {
-    Swal.fire({
-        title: "Error!",
-        text: "User not found, please sign up.",
-        icon: "error",
-        iconColor: "red",
-        confirmButtonText: "OK",
-        confirmButtonColor: "#24242c",
-    });
-    console.log("No user found in localStorage.");
-    return;
-}
+
       
      username.innerHTML=storedUser.name
 
