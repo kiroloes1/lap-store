@@ -528,11 +528,29 @@ margin: 10px;
 .login{
   background-color: #d3c0c0;
 }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+}
+@media (max-width: 722px) {  
+.navbar ,.landing {
+  width: 113%;
+  display: flex;
+ }
+ footer {
+  width: 111.9%;
+  display: flex;
+ }
+}
 
     </style>
 
 
-    <body class="bg-white"  >
+    <body class="bg-white "  >
       
  
 <!-- start navbar  -->
@@ -584,7 +602,7 @@ margin: 10px;
       <!-- end navbar -->
 
       <!-- start header -->
-       <div class="landing bg-dark  d-flex  align-items-center  justify-content-center">
+       <div class=" landing bg-dark  d-flex  align-items-center  justify-content-center">
        <div class="row d-flex  align-items-center container flex-column flex-lg-row  ">
         <div class="col-10 col-md-6 ">
             <!-- title  -->
@@ -604,7 +622,7 @@ margin: 10px;
     </div>
 
  
-      <div id="offer_section" class="m-5 text-center"><h2>offer</h2></div>
+      <div id="offer_section" class="offer m-5 text-center"><h2>offer</h2></div>
       <div class="container-fluid text-center  bg-light review my-5 p-3 animated2 ">
       <!-- Three columns of text below the carousel -->
       <div class="row ">
@@ -863,7 +881,7 @@ margin: 10px;
     </div>
 
     <!-- footer -->
-    <footer class="bg-dark text-light pt-4 pb-2 animated7  ">
+    <footer class="bg-dark text-light pt-4 pb-2 animated7 ">
       <div class="container">
         <div class="row">
           
